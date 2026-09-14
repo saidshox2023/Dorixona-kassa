@@ -227,13 +227,565 @@ select.in{padding-right:28px}
 
 .foot .linkbtn{color:var(--pen)}
 .loading{padding-block:40px;text-align:center;color:var(--ink-2)}
+.ph{display:block;padding:0;border:1px solid var(--line);background:var(--surface);border-radius:8px;overflow:hidden;cursor:zoom-in;width:100%;max-width:340px;margin-top:8px}
+.ph img{display:block;width:100%;height:auto;max-height:240px;object-fit:cover}
+.ph-wait{display:flex;align-items:center;justify-content:center;min-height:64px;font-size:13px;color:var(--ink-3);cursor:default;border-style:dashed}
+.ph-win{max-width:100%}
+.ph-win img{max-height:300px;object-fit:cover}
+.ph-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.lightbox{position:fixed;inset:0;z-index:20;background:rgba(10,14,22,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
+.lightbox img{max-width:100%;max-height:82vh;border-radius:6px;object-fit:contain}
+.lightbox .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 </style>
 </head>
 <body>
 <div id="app" class="wrap"><p class="loading">Kassa yuklanmoqda…</p></div>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
-<script>window.INITIAL_STATE={"v": 1, "settings": {"name": "Dorixonachilar kassasi", "lotPrice": 1000, "cur": "$", "day": 15}, "members": [{"id": "m2", "name": "Jasurbek aka", "lots": 1.5}, {"id": "m3", "name": "Mirzoxid", "lots": 1.5}, {"id": "m4", "name": "Donyorbek", "lots": 2}, {"id": "m5", "name": "Shoxrux", "lots": 1}, {"id": "m6", "name": "Rasuljon", "lots": 2}, {"id": "m7", "name": "Alisher", "lots": 1}, {"id": "m8", "name": "Sarvarbek", "lots": 3}, {"id": "m9", "name": "Saydullo", "lots": 1}, {"id": "m10", "name": "Bunyodbek", "lots": 2}], "gaps": [{"id": "g1", "date": "2026-06-17", "rows": [{"m": "m2", "amt": 1500, "paid": true}, {"m": "m3", "amt": 1500, "paid": true}, {"m": "m4", "amt": 2000, "paid": true}, {"m": "m5", "amt": 1000, "paid": true}, {"m": "m6", "amt": 2000, "paid": true}, {"m": "m7", "amt": 1000, "paid": true}, {"m": "m8", "amt": 3000, "paid": true}, {"m": "m9", "amt": 1000, "paid": true}, {"m": "m10", "amt": 2000, "paid": true}], "winners": [{"m": "m5", "part": 1}], "place": "Sharshara samovari, 35-xona", "food": "Osh, 1,4 kg", "expense": 133000, "note": "", "signs": {"m5": {"d": "M80 22.5Q83.5 27 85.5 30Q87 32.5 89 35Q90.5 37 92 40Q93 42.5 94.5 45.5Q95.5 48 96.5 50.5Q97.5 52.5 98.5 54.5Q99.5 56 100.5 58Q101 59.5 102 61Q103 62.5 104 64Q104.5 65.5 105 66.5Q105.5 67.5 106 68.5Q106.5 69.5 107 70.5Q107.5 71 108 72Q108.5 73 109 74.5Q109.5 75.5 110 76.5Q110 77.5 110.5 78.5Q110.5 79.5 111 81Q111 82.5 111 83.5Q110.5 84 110.5 85Q110 85.5 109.5 87Q108.5 88.5 107.5 89.5Q106.5 90 105.5 91Q104 92 103 93.5Q101.5 94.5 98 96.5Q94 98 92 98.5Q90 99 88 100Q86 100.5 84 101Q81.5 101 79.5 101.5Q77 101.5 75 101.5Q72.5 101.5 70.5 101.5Q68.5 101 66.5 101Q64.5 100.5 62.5 100.5Q60.5 100 58.5 100Q56.5 99.5 55.5 99.5Q54 99 53 99Q52 99 51.5 99L50.5 98.5M67.5 45.5Q69 41 69.5 40Q69.5 39 70.5 37.5Q71 36 72 35Q72.5 33.5 73.5 32.5Q74.5 31 79 27Q83 22.5 85 21Q87 19 89 17.5Q91 16 93 14.5Q94.5 13 96.5 11.5Q98 10 102 8Q106 6 109 5Q111.5 4 114 3.5Q116.5 2.5 118.5 2.5Q120 2 122 2Q123.5 2 125 2.5Q126.5 2.5 127.5 3Q128.5 3 130 4Q131 4.5 131.5 5Q132 5.5 133 7Q133.5 8 134.5 10.5Q135.5 13 136 15.5Q136 17.5 136 20Q135.5 22 135.5 24Q135 26 134.5 28Q133.5 30 132.5 32Q131.5 33.5 130.5 35Q129 36.5 128 38.5Q126.5 40 125 41.5Q123.5 42.5 121.5 44Q119.5 45 117.5 46.5Q115.5 47.5 113.5 49Q111.5 50 110 51Q108.5 51.5 107.5 52Q106.5 52.5 105.5 53Q104.5 53 106.5 52Q108.5 50.5 110 50Q111 49 112.5 49Q113.5 48.5 115 48Q116.5 47.5 118 47.5Q119 47.5 120 48Q120.5 48 121.5 48.5Q122 48.5 123 49Q123.5 49 126.5 55Q129.5 60.5 130 62.5Q130.5 64 131 66Q131 67.5 131 69.5Q131 71.5 131.5 73.5Q131.5 75 131.5 76.5Q131.5 78 131.5 79.5Q131.5 80.5 132 81.5Q132 82.5 132.5 83.5Q133 84.5 134.5 85Q135.5 85.5 137 85.5Q138 85.5 139 85.5Q139.5 85 141 84Q142.5 83 144 82.5Q145 81.5 146 80.5Q147 79.5 148 78.5Q149 77 150.5 75.5Q151.5 74 152 73Q152.5 71.5 153.5 70.5Q154 69.5 154.5 68.5Q155 67.5 155.5 69Q155.5 70.5 155.5 72.5Q155 74 155 76Q155 78 155 80Q155 81.5 155 83.5Q155 85 155 86.5Q155 87.5 155.5 89Q155.5 90 156 91.5Q156 93 156.5 94Q156.5 95 157 96.5Q157.5 97.5 158 98.5Q158.5 99.5 159 101Q159.5 102 160.5 103.5Q161 104.5 162 106Q163 107 163.5 108Q164 108.5 165 109Q165.5 109.5 166.5 110.5Q167 111 168 111.5Q168.5 112 170.5 112.5Q172 112.5 173 112.5Q174 112 175.5 111.5Q176.5 111 177.5 110.5Q178.5 110 179.5 109.5Q180 109 180.5 108.5Q181 108 182 107.5Q182.5 106.5 183.5 105.5Q184 104.5 184.5 103.5Q185 102 185.5 101Q186 99.5 186.5 98.5Q186.5 97 186.5 96Q186.5 95 186.5 94Q186.5 92.5 186.5 91.5Q186.5 90 186.5 89Q186 87.5 185.5 86.5Q185 85 184.5 84Q184 83 183.5 82Q182.5 81 182 80.5Q181 79.5 180 78.5Q178.5 77.5 177 77Q175.5 76 174.5 75.5Q173 75 172 75Q171 74.5 170 74.5Q168.5 74 167 74.5Q165.5 74.5 164.5 74.5Q163 74.5 162.5 75L161.5 75M178 42.5Q182.5 40.5 183.5 40.5L184 40M197 80Q206.5 79.5 208 79.5Q209.5 79 211.5 79Q213.5 79 215.5 79Q217 78.5 219.5 79Q221.5 79 223.5 79Q225 79 227 79Q229 78.5 230.5 78.5Q232 78.5 233.5 78.5Q234.5 78 236.5 78Q238.5 77.5 239.5 78Q240 78 239 80Q238 81.5 237 83Q236 84.5 234.5 86.5Q232.5 88.5 230.5 90.5Q228.5 92.5 226.5 95Q224.5 97.5 223 99.5Q221 101 219.5 103Q218 104.5 217 106Q215.5 107.5 214.5 109Q213.5 110.5 213 111.5Q212 112.5 211.5 113.5Q211 114 210.5 115Q210 115.5 210.5 115Q211 114 211.5 113Q212 111.5 212.5 111Q213 110 213.5 109Q214 108 214.5 107.5Q215 106.5 215.5 106Q216 105.5 216.5 105Q217 104.5 217.5 104Q218 103.5 219 103Q220 102 221 101.5Q222 101 223.5 101Q224.5 100.5 226 100.5Q227 100.5 228.5 101Q229.5 101.5 230.5 102Q231 102 232 103Q232.5 103.5 234 105Q235.5 106.5 237 108Q238 109.5 239.5 111Q240.5 112 241.5 113.5Q242 114.5 243.5 116.5Q245 118.5 246 119.5Q246.5 120 247 121Q247.5 122 248.5 122.5Q249 123 250 124Q250.5 124.5 251 125Q251.5 125.5 252.5 126Q253 126 255 125Q256.5 124 257.5 123.5Q258 122.5 259 121Q260 119.5 261 118Q261.5 116.5 262.5 114.5Q263.5 112.5 264.5 110.5Q265 108 266 106Q267 103.5 268 101.5Q268.5 99.5 269.5 98Q270 96.5 270.5 95.5Q271 94 271.5 93.5Q271.5 92.5 272 92Q272.5 91.5 273 91Q273.5 90.5 275.5 93Q277.5 95 278 97Q278.5 99 279 101Q279.5 103 280 105Q280 107 280.5 108.5Q280.5 110 280.5 111.5Q280.5 112.5 280.5 114Q280 115 280 116Q280 117 280.5 116.5Q281 116 282 114Q283 112 284 110Q285 107.5 286 105.5Q286.5 103.5 288 101Q289 98.5 290 97Q290.5 95.5 291.5 94Q292.5 92.5 294 91Q295 89.5 296 88.5Q296.5 87.5 297.5 87Q298 86 299 85.5Q299.5 84.5 300.5 84Q301 83.5 302 83.5Q302.5 83 303.5 83Q304.5 83 306 84Q307 85 308 87Q309 88.5 310.5 91Q311.5 93 312 94.5Q312.5 95.5 314 101Q315.5 106.5 316 109Q316.5 111.5 317 113Q317.5 114.5 318 116Q318.5 117.5 319 119Q319.5 120 320 121Q320.5 122 322.5 122.5Q324.5 122.5 326 121.5Q327 120.5 329 118.5Q330.5 116 332.5 112.5Q334.5 109 336.5 105.5Q338.5 101.5 340.5 98.5Q342.5 95 345 91.5Q347.5 88 350 84.5Q352.5 81 354.5 78Q356.5 74.5 358.5 71.5Q360.5 68 362 65Q363.5 62 365 59Q366.5 56 367.5 53.5Q368 50.5 368.5 47Q369 43.5 368.5 40.5Q368 37 367 34Q366 30.5 364 28Q362 25 358.5 21.5Q355 17.5 349.5 13.5Q344 9 338 5.5Q331.5 2 324.5 1Q317 0 310 0Q302.5 0 295 0Q287 0 279 0Q271 0 263 0Q255 0 248 0Q240.5 0 233.5 0Q226.5 0 220.5 0Q214 0 208.5 1.5Q202.5 3 197.5 6Q192 9 188 12.5Q184 15.5 180.5 20Q177 24 174.5 28.5Q172 33 170.5 38Q169 42.5 168.5 48.5Q168 54.5 169 61.5Q169.5 68 171 75.5Q172 83 174.5 91Q176.5 98.5 179.5 107Q182.5 115.5 186.5 124Q190.5 132 194 139.5Q197.5 146.5 201.5 152.5Q205 158.5 208.5 159.5Q211.5 160 214.5 160Q217 160 220.5 160Q224 160 227 160Q229.5 160 231.5 160Q233.5 160 235 160Q236.5 160 237.5 160Q238.5 160 240.5 160Q242 160 241 158.5Q240 157 238.5 153Q237 148.5 235 143Q233 137.5 230.5 132Q227.5 126 224.5 120.5Q221.5 115 218.5 108.5Q215 102 211.5 95.5Q207.5 88.5 203.5 81Q199.5 73.5 195.5 66.5Q191.5 59 188 52.5Q184.5 46 180.5 39.5Q176.5 33 173 28Q169 22.5 166 18Q162.5 13.5 160 10Q157 6.5 155 4Q152.5 1.5 150.5 1Q148.5 0 147 0Q145 0 144 0Q142.5 0 140.5 0Q138 0 137.5 3Q137 5.5 138 9.5Q138.5 13.5 140 18.5Q141.5 23.5 144 29Q146 34.5 148.5 41.5Q151 48 154 55Q157 61.5 161 69.5Q165 77 170 85Q175 93 180 101Q185 109 190.5 116.5Q196 124 202 131Q207.5 138 212.5 144Q217 149.5 221.5 154Q226 158 230.5 159Q235 160 239 160Q243 160 246.5 160Q249.5 160 253 160Q256 160 259 160Q262 160 264.5 160Q267 160 269 160Q271 160 272 160Q273 160 266.5 160Q260 160 255.5 160Q251 160 245.5 160Q239.5 160 233.5 160Q227.5 160 221 160Q214 160 206 160Q197.5 160 189 160Q180.5 160 171.5 160Q162 160 152 160Q142 160 132 160Q122 160 112 160Q102 160 93 160Q83.5 160 75.5 160Q67 160 60 160Q52.5 160 45.5 160Q38.5 160 33 160Q27.5 160 23 160Q18 160 14 160Q9.5 160 6.5 160Q3 160 1.5 160Q0 160 5 160Q10 160 15 160Q19.5 160 25 160Q30 160 36.5 160Q42.5 160 50 160Q57 160 62.5 160Q67.5 160 75.5 160Q83.5 160 94.5 155.5Q105 151 117 144Q128.5 136.5 141 129Q153.5 121.5 166 114.5Q178.5 107.5 191 100.5Q203.5 93.5 216 86.5Q228 79.5 240 73Q252 66.5 263.5 60.5Q275 54 286.5 48.5Q297.5 42.5 308.5 37.5Q319 32 329.5 27.5Q340 22.5 349.5 18.5Q359 14.5 367.5 11Q376 7.5 383.5 4.5Q391 1.5 395.5 1Q400 0 400 2.5Q400 5 394 11Q388 16.5 382.5 21L377 25", "at": "2026-09-11T22:17"}}}, {"id": "gmtx82eat4401", "date": "2026-07-15", "rows": [{"m": "m2", "amt": 1500, "paid": true}, {"m": "m3", "amt": 1500, "paid": true}, {"m": "m4", "amt": 2000, "paid": true}, {"m": "m5", "amt": 1000, "paid": true}, {"m": "m6", "amt": 2000, "paid": true}, {"m": "m7", "amt": 1000, "paid": true}, {"m": "m8", "amt": 3000, "paid": true}, {"m": "m9", "amt": 1000, "paid": true}, {"m": "m10", "amt": 2000, "paid": true}], "winners": [{"m": "m8", "part": 1}], "signs": {}, "rate": 12050, "place": "Movorunaxr somovori ", "food": "Qozon kabob ", "expense": 1314000, "note": ""}]};</script>
-<script src="config.js"></script>
-<script type="module" src="app.js"></script>
+<input type="file" id="photo-input" accept="image/*" hidden>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js';
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js';
+import { initializeFirestore, persistentLocalCache, persistentSingleTabManager, doc, onSnapshot, setDoc, getDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js';
+const FIREBASE_CONFIG={
+  apiKey: "AIzaSyBM33d_VaNEHaCGVk7Y0TRfZn38eyVw9sI",
+  authDomain: "dorixona-kassa.firebaseapp.com",
+  projectId: "dorixona-kassa",
+  storageBucket: "dorixona-kassa.firebasestorage.app",
+  messagingSenderId: "814437310687",
+  appId: "1:814437310687:web:0a4e4074db5a6adfe1496a"
+};
+const INITIAL_STATE={"v": 1, "settings": {"name": "Dorixonachilar kassasi", "lotPrice": 1000, "cur": "$", "day": 15}, "members": [{"id": "m2", "name": "Jasurbek aka", "lots": 1.5}, {"id": "m3", "name": "Mirzoxid", "lots": 1.5}, {"id": "m4", "name": "Donyorbek", "lots": 2}, {"id": "m5", "name": "Shoxrux", "lots": 1}, {"id": "m6", "name": "Rasuljon", "lots": 2}, {"id": "m7", "name": "Alisher", "lots": 1}, {"id": "m8", "name": "Sarvarbek", "lots": 3}, {"id": "m9", "name": "Saydullo", "lots": 1}, {"id": "m10", "name": "Bunyodbek", "lots": 2}], "gaps": [{"id": "g1", "date": "2026-06-17", "rows": [{"m": "m2", "amt": 1500, "paid": true}, {"m": "m3", "amt": 1500, "paid": true}, {"m": "m4", "amt": 2000, "paid": true}, {"m": "m5", "amt": 1000, "paid": true}, {"m": "m6", "amt": 2000, "paid": true}, {"m": "m7", "amt": 1000, "paid": true}, {"m": "m8", "amt": 3000, "paid": true}, {"m": "m9", "amt": 1000, "paid": true}, {"m": "m10", "amt": 2000, "paid": true}], "winners": [{"m": "m5", "part": 1}], "place": "Sharshara samovari, 35-xona", "food": "Osh, 1,4 kg", "expense": 133000, "note": "", "signs": {"m5": {"d": "M80 22.5Q83.5 27 85.5 30Q87 32.5 89 35Q90.5 37 92 40Q93 42.5 94.5 45.5Q95.5 48 96.5 50.5Q97.5 52.5 98.5 54.5Q99.5 56 100.5 58Q101 59.5 102 61Q103 62.5 104 64Q104.5 65.5 105 66.5Q105.5 67.5 106 68.5Q106.5 69.5 107 70.5Q107.5 71 108 72Q108.5 73 109 74.5Q109.5 75.5 110 76.5Q110 77.5 110.5 78.5Q110.5 79.5 111 81Q111 82.5 111 83.5Q110.5 84 110.5 85Q110 85.5 109.5 87Q108.5 88.5 107.5 89.5Q106.5 90 105.5 91Q104 92 103 93.5Q101.5 94.5 98 96.5Q94 98 92 98.5Q90 99 88 100Q86 100.5 84 101Q81.5 101 79.5 101.5Q77 101.5 75 101.5Q72.5 101.5 70.5 101.5Q68.5 101 66.5 101Q64.5 100.5 62.5 100.5Q60.5 100 58.5 100Q56.5 99.5 55.5 99.5Q54 99 53 99Q52 99 51.5 99L50.5 98.5M67.5 45.5Q69 41 69.5 40Q69.5 39 70.5 37.5Q71 36 72 35Q72.5 33.5 73.5 32.5Q74.5 31 79 27Q83 22.5 85 21Q87 19 89 17.5Q91 16 93 14.5Q94.5 13 96.5 11.5Q98 10 102 8Q106 6 109 5Q111.5 4 114 3.5Q116.5 2.5 118.5 2.5Q120 2 122 2Q123.5 2 125 2.5Q126.5 2.5 127.5 3Q128.5 3 130 4Q131 4.5 131.5 5Q132 5.5 133 7Q133.5 8 134.5 10.5Q135.5 13 136 15.5Q136 17.5 136 20Q135.5 22 135.5 24Q135 26 134.5 28Q133.5 30 132.5 32Q131.5 33.5 130.5 35Q129 36.5 128 38.5Q126.5 40 125 41.5Q123.5 42.5 121.5 44Q119.5 45 117.5 46.5Q115.5 47.5 113.5 49Q111.5 50 110 51Q108.5 51.5 107.5 52Q106.5 52.5 105.5 53Q104.5 53 106.5 52Q108.5 50.5 110 50Q111 49 112.5 49Q113.5 48.5 115 48Q116.5 47.5 118 47.5Q119 47.5 120 48Q120.5 48 121.5 48.5Q122 48.5 123 49Q123.5 49 126.5 55Q129.5 60.5 130 62.5Q130.5 64 131 66Q131 67.5 131 69.5Q131 71.5 131.5 73.5Q131.5 75 131.5 76.5Q131.5 78 131.5 79.5Q131.5 80.5 132 81.5Q132 82.5 132.5 83.5Q133 84.5 134.5 85Q135.5 85.5 137 85.5Q138 85.5 139 85.5Q139.5 85 141 84Q142.5 83 144 82.5Q145 81.5 146 80.5Q147 79.5 148 78.5Q149 77 150.5 75.5Q151.5 74 152 73Q152.5 71.5 153.5 70.5Q154 69.5 154.5 68.5Q155 67.5 155.5 69Q155.5 70.5 155.5 72.5Q155 74 155 76Q155 78 155 80Q155 81.5 155 83.5Q155 85 155 86.5Q155 87.5 155.5 89Q155.5 90 156 91.5Q156 93 156.5 94Q156.5 95 157 96.5Q157.5 97.5 158 98.5Q158.5 99.5 159 101Q159.5 102 160.5 103.5Q161 104.5 162 106Q163 107 163.5 108Q164 108.5 165 109Q165.5 109.5 166.5 110.5Q167 111 168 111.5Q168.5 112 170.5 112.5Q172 112.5 173 112.5Q174 112 175.5 111.5Q176.5 111 177.5 110.5Q178.5 110 179.5 109.5Q180 109 180.5 108.5Q181 108 182 107.5Q182.5 106.5 183.5 105.5Q184 104.5 184.5 103.5Q185 102 185.5 101Q186 99.5 186.5 98.5Q186.5 97 186.5 96Q186.5 95 186.5 94Q186.5 92.5 186.5 91.5Q186.5 90 186.5 89Q186 87.5 185.5 86.5Q185 85 184.5 84Q184 83 183.5 82Q182.5 81 182 80.5Q181 79.5 180 78.5Q178.5 77.5 177 77Q175.5 76 174.5 75.5Q173 75 172 75Q171 74.5 170 74.5Q168.5 74 167 74.5Q165.5 74.5 164.5 74.5Q163 74.5 162.5 75L161.5 75M178 42.5Q182.5 40.5 183.5 40.5L184 40M197 80Q206.5 79.5 208 79.5Q209.5 79 211.5 79Q213.5 79 215.5 79Q217 78.5 219.5 79Q221.5 79 223.5 79Q225 79 227 79Q229 78.5 230.5 78.5Q232 78.5 233.5 78.5Q234.5 78 236.5 78Q238.5 77.5 239.5 78Q240 78 239 80Q238 81.5 237 83Q236 84.5 234.5 86.5Q232.5 88.5 230.5 90.5Q228.5 92.5 226.5 95Q224.5 97.5 223 99.5Q221 101 219.5 103Q218 104.5 217 106Q215.5 107.5 214.5 109Q213.5 110.5 213 111.5Q212 112.5 211.5 113.5Q211 114 210.5 115Q210 115.5 210.5 115Q211 114 211.5 113Q212 111.5 212.5 111Q213 110 213.5 109Q214 108 214.5 107.5Q215 106.5 215.5 106Q216 105.5 216.5 105Q217 104.5 217.5 104Q218 103.5 219 103Q220 102 221 101.5Q222 101 223.5 101Q224.5 100.5 226 100.5Q227 100.5 228.5 101Q229.5 101.5 230.5 102Q231 102 232 103Q232.5 103.5 234 105Q235.5 106.5 237 108Q238 109.5 239.5 111Q240.5 112 241.5 113.5Q242 114.5 243.5 116.5Q245 118.5 246 119.5Q246.5 120 247 121Q247.5 122 248.5 122.5Q249 123 250 124Q250.5 124.5 251 125Q251.5 125.5 252.5 126Q253 126 255 125Q256.5 124 257.5 123.5Q258 122.5 259 121Q260 119.5 261 118Q261.5 116.5 262.5 114.5Q263.5 112.5 264.5 110.5Q265 108 266 106Q267 103.5 268 101.5Q268.5 99.5 269.5 98Q270 96.5 270.5 95.5Q271 94 271.5 93.5Q271.5 92.5 272 92Q272.5 91.5 273 91Q273.5 90.5 275.5 93Q277.5 95 278 97Q278.5 99 279 101Q279.5 103 280 105Q280 107 280.5 108.5Q280.5 110 280.5 111.5Q280.5 112.5 280.5 114Q280 115 280 116Q280 117 280.5 116.5Q281 116 282 114Q283 112 284 110Q285 107.5 286 105.5Q286.5 103.5 288 101Q289 98.5 290 97Q290.5 95.5 291.5 94Q292.5 92.5 294 91Q295 89.5 296 88.5Q296.5 87.5 297.5 87Q298 86 299 85.5Q299.5 84.5 300.5 84Q301 83.5 302 83.5Q302.5 83 303.5 83Q304.5 83 306 84Q307 85 308 87Q309 88.5 310.5 91Q311.5 93 312 94.5Q312.5 95.5 314 101Q315.5 106.5 316 109Q316.5 111.5 317 113Q317.5 114.5 318 116Q318.5 117.5 319 119Q319.5 120 320 121Q320.5 122 322.5 122.5Q324.5 122.5 326 121.5Q327 120.5 329 118.5Q330.5 116 332.5 112.5Q334.5 109 336.5 105.5Q338.5 101.5 340.5 98.5Q342.5 95 345 91.5Q347.5 88 350 84.5Q352.5 81 354.5 78Q356.5 74.5 358.5 71.5Q360.5 68 362 65Q363.5 62 365 59Q366.5 56 367.5 53.5Q368 50.5 368.5 47Q369 43.5 368.5 40.5Q368 37 367 34Q366 30.5 364 28Q362 25 358.5 21.5Q355 17.5 349.5 13.5Q344 9 338 5.5Q331.5 2 324.5 1Q317 0 310 0Q302.5 0 295 0Q287 0 279 0Q271 0 263 0Q255 0 248 0Q240.5 0 233.5 0Q226.5 0 220.5 0Q214 0 208.5 1.5Q202.5 3 197.5 6Q192 9 188 12.5Q184 15.5 180.5 20Q177 24 174.5 28.5Q172 33 170.5 38Q169 42.5 168.5 48.5Q168 54.5 169 61.5Q169.5 68 171 75.5Q172 83 174.5 91Q176.5 98.5 179.5 107Q182.5 115.5 186.5 124Q190.5 132 194 139.5Q197.5 146.5 201.5 152.5Q205 158.5 208.5 159.5Q211.5 160 214.5 160Q217 160 220.5 160Q224 160 227 160Q229.5 160 231.5 160Q233.5 160 235 160Q236.5 160 237.5 160Q238.5 160 240.5 160Q242 160 241 158.5Q240 157 238.5 153Q237 148.5 235 143Q233 137.5 230.5 132Q227.5 126 224.5 120.5Q221.5 115 218.5 108.5Q215 102 211.5 95.5Q207.5 88.5 203.5 81Q199.5 73.5 195.5 66.5Q191.5 59 188 52.5Q184.5 46 180.5 39.5Q176.5 33 173 28Q169 22.5 166 18Q162.5 13.5 160 10Q157 6.5 155 4Q152.5 1.5 150.5 1Q148.5 0 147 0Q145 0 144 0Q142.5 0 140.5 0Q138 0 137.5 3Q137 5.5 138 9.5Q138.5 13.5 140 18.5Q141.5 23.5 144 29Q146 34.5 148.5 41.5Q151 48 154 55Q157 61.5 161 69.5Q165 77 170 85Q175 93 180 101Q185 109 190.5 116.5Q196 124 202 131Q207.5 138 212.5 144Q217 149.5 221.5 154Q226 158 230.5 159Q235 160 239 160Q243 160 246.5 160Q249.5 160 253 160Q256 160 259 160Q262 160 264.5 160Q267 160 269 160Q271 160 272 160Q273 160 266.5 160Q260 160 255.5 160Q251 160 245.5 160Q239.5 160 233.5 160Q227.5 160 221 160Q214 160 206 160Q197.5 160 189 160Q180.5 160 171.5 160Q162 160 152 160Q142 160 132 160Q122 160 112 160Q102 160 93 160Q83.5 160 75.5 160Q67 160 60 160Q52.5 160 45.5 160Q38.5 160 33 160Q27.5 160 23 160Q18 160 14 160Q9.5 160 6.5 160Q3 160 1.5 160Q0 160 5 160Q10 160 15 160Q19.5 160 25 160Q30 160 36.5 160Q42.5 160 50 160Q57 160 62.5 160Q67.5 160 75.5 160Q83.5 160 94.5 155.5Q105 151 117 144Q128.5 136.5 141 129Q153.5 121.5 166 114.5Q178.5 107.5 191 100.5Q203.5 93.5 216 86.5Q228 79.5 240 73Q252 66.5 263.5 60.5Q275 54 286.5 48.5Q297.5 42.5 308.5 37.5Q319 32 329.5 27.5Q340 22.5 349.5 18.5Q359 14.5 367.5 11Q376 7.5 383.5 4.5Q391 1.5 395.5 1Q400 0 400 2.5Q400 5 394 11Q388 16.5 382.5 21L377 25", "at": "2026-09-11T22:17"}}}, {"id": "gmtx82eat4401", "date": "2026-07-15", "rows": [{"m": "m2", "amt": 1500, "paid": true}, {"m": "m3", "amt": 1500, "paid": true}, {"m": "m4", "amt": 2000, "paid": true}, {"m": "m5", "amt": 1000, "paid": true}, {"m": "m6", "amt": 2000, "paid": true}, {"m": "m7", "amt": 1000, "paid": true}, {"m": "m8", "amt": 3000, "paid": true}, {"m": "m9", "amt": 1000, "paid": true}, {"m": "m10", "amt": 2000, "paid": true}], "winners": [{"m": "m8", "part": 1}], "signs": {}, "rate": 12050, "place": "Movorunaxr somovori ", "food": "Qozon kabob ", "expense": 1314000, "note": ""}]};
+const APP_VERSION="2026-09-14.2";
+
+var app=initializeApp(FIREBASE_CONFIG);
+var auth=getAuth(app);
+var fdb=initializeFirestore(app,{localCache:persistentLocalCache({tabManager:persistentSingleTabManager()})});
+var ref=doc(fdb,'kassa','main');
+
+var MONTHS=['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr'];
+var TICK='<svg class="tick" viewBox="0 0 32 24" aria-hidden="true"><path d="M3 12.5c2.6 1.6 4.6 4.2 6.4 8.2C13.8 12 19.6 5.6 29 2.2" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var PENCIL='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10.8 2.2l3 3L5.5 13.5 2 14l.5-3.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+var SW=400,SH=160;
+
+var state=clone(INITIAL_STATE);
+var saved=clone(state);
+var loaded=false,dirty=false,saving=false,user=null,canEdit=false,remoteWaiting=null;
+var ui={tab:'gaps',gap:null,open:null,edit:false,del:null,sign:null};
+try{var s=JSON.parse(sessionStorage.getItem('kassa-ui')||'null');if(s){ui.tab=s.tab||ui.tab;ui.gap=s.gap||null;ui.open=s.open||null;}}catch(e){}
+var sig={strokes:[]};
+var photos={};      /* id -> data URL ('' = yoʻq, undefined = hali yuklanmagan) */
+var lightbox=null;  /* ochilgan surat id */
+var busyPhoto=false;
+
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function num(n){n=+n||0;var r=Math.round(Math.abs(n));return (n<0?'−':'')+String(r).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
+function cur(){return state.settings.cur||'$';}
+function usd(n){return cur()+num(n);}
+function som(n){return num(n)+' soʻm';}
+function lotsTxt(x){x=Math.round((+x||0)*100)/100;return String(x).replace('.',',');}
+function toNum(v){var t=String(v).replace(/\s| /g,'').replace(',','.').replace(/[^\d.]/g,'');return t?+t:0;}
+function parseISO(d){var p=String(d).split('-');return new Date(+p[0],(+p[1]||1)-1,+p[2]||1);}
+function dmy(d){var p=String(d).split('-');return p.length===3?p[2]+'.'+p[1]+'.'+p[0]:d;}
+function dayMonth(dt){return dt.getDate()+'-'+MONTHS[dt.getMonth()];}
+function iso(dt){return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');}
+function stamp(){var d=new Date();return iso(d)+'T'+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+function atTxt(a){if(!a)return '';var p=String(a).split('T');return dmy(p[0])+(p[1]?', '+p[1].slice(0,5):'');}
+function uid(p){return p+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function member(id){return state.members.find(function(m){return m.id===id;})||{id:id,name:'(oʻchirilgan)',lots:0};}
+function active(){return state.members.filter(function(m){return m.active!==false;});}
+function sorted(){return state.gaps.slice().sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:0;});}
+function gapNo(g){return sorted().indexOf(g)+1;}
+function pot(g){return g.rows.reduce(function(s,r){return s+(+r.amt||0);},0);}
+function collected(g){return g.rows.reduce(function(s,r){return s+(r.paid?(+r.amt||0):0);},0);}
+function isEdit(){return canEdit&&ui.edit;}
+function curGap(){var gs=sorted();return gs.find(function(x){return x.id===ui.gap;})||gs[gs.length-1]||null;}
+function names(ids){return ids.map(function(id){return member(id).name;});}
+function prevRate(g){var gs=sorted(),i=gs.indexOf(g);for(var j=(i<0?gs.length:i)-1;j>=0;j--)if(+gs[j].rate)return +gs[j].rate;return 0;}
+
+function stats(){
+  var st={};state.members.forEach(function(m){st[m.id]={paid:0,due:0,won:0,parts:0,exp:0,hist:[]};});
+  sorted().forEach(function(g,i){
+    var p=pot(g),per=g.rows.length?(+g.expense||0)/g.rows.length:0;
+    g.rows.forEach(function(r){var s=st[r.m];if(!s)return;var a=+r.amt||0;if(r.paid)s.paid+=a;else s.due+=a;s.exp+=per;s.hist.push({g:g,n:i+1,amt:a,paid:!!r.paid,won:0});});
+    (g.winners||[]).forEach(function(w){var s=st[w.m];if(!s)return;s.won+=p*w.part;s.parts+=w.part;var h=s.hist.find(function(x){return x.g===g;});if(h)h.won=p*w.part;else s.hist.push({g:g,n:i+1,amt:0,paid:true,won:p*w.part,absent:true});});
+  });
+  return st;
+}
+function pool(excludeId){
+  var won={};state.gaps.forEach(function(g){if(g.id===excludeId)return;(g.winners||[]).forEach(function(w){won[w.m]=(won[w.m]||0)+w.part;});});
+  var t=[],halves=[];
+  active().forEach(function(m){var r=Math.round(((+m.lots||0)-(won[m.id]||0))*100)/100;if(r<=0)return;var f=Math.floor(r+1e-9);for(var i=0;i<f;i++)t.push({ms:[m.id],part:1});if(r-f>=0.49)halves.push(m.id);});
+  for(var i=0;i<halves.length;i+=2)t.push({ms:halves.slice(i,i+2),part:0.5});
+  return t;
+}
+function tLabel(t){return names(t.ms).join(' + ')+(t.part<1&&t.ms.length<2?' (yarim)':'');}
+function tKey(t){return t.ms.join('+')+'|'+t.part;}
+function nextGap(){var day=+state.settings.day||15,t=new Date();t.setHours(0,0,0,0);var c=new Date(t.getFullYear(),t.getMonth(),day);if(c<t)c=new Date(t.getFullYear(),t.getMonth()+1,day);return {dt:c,diff:Math.round((c-t)/864e5)};}
+function newGapDate(){var gs=sorted(),day=+state.settings.day||15;if(!gs.length)return iso(nextGap().dt);var l=parseISO(gs[gs.length-1].date);return iso(new Date(l.getFullYear(),l.getMonth()+1,day));}
+function dots(total,used){
+  var h='',full=Math.floor(total+1e-9),half=total-full>=0.49,u=used;
+  for(var i=0;i<full;i++){var usedThis=u>=1-1e-9;h+='<i class="dot'+(usedThis?' used':'')+'"></i>';if(usedThis)u-=1;}
+  if(half)h+='<i class="dot half'+(u>=0.49?' used':'')+'"></i>';
+  return '<span class="dots" aria-hidden="true">'+h+'</span>';
+}
+function sigSvg(d,cls){return '<svg class="'+(cls||'sig')+'" viewBox="0 0 '+SW+' '+SH+'" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><path d="'+esc(d)+'" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';}
+
+/* ---------- suratlar ---------- */
+function photoId(g,kind,m){return 'p_'+g.id+'_'+kind+(m?'_'+m:'');}
+function photoRef(g,kind,m){var p=g.photos||{};return kind==='food'?(p.food||''):((p.win||{})[m]||'');}
+function wantPhoto(id){
+  if(!id||id in photos)return;
+  photos[id]=undefined;
+  getDoc(doc(fdb,'kassa',id)).then(function(s){photos[id]=s.exists()?(s.data().data||''):'';later();},
+    function(){photos[id]='';later();});
+}
+function photoBox(id,alt,cls){
+  wantPhoto(id);
+  var d=photos[id];
+  if(d===undefined)return '<div class="ph '+(cls||'')+' ph-wait">yuklanmoqda…</div>';
+  if(!d)return '<div class="ph '+(cls||'')+' ph-wait">surat ochilmadi</div>';
+  return '<button class="ph '+(cls||'')+'" data-act="zoom" data-v="'+id+'" aria-label="'+esc(alt)+' — kattalashtirish"><img src="'+d+'" alt="'+esc(alt)+'"></button>';
+}
+function photoActs(kind,m,has){
+  return '<div class="ph-acts">'+
+    '<button class="btn sm" data-act="pick-photo" data-v="'+kind+(m?':'+m:'')+'"'+(busyPhoto?' disabled':'')+'>'+(has?'Suratni almashtirish':'Surat qoʻshish')+'</button>'+
+    (has?'<button class="btn sm danger" data-act="rm-photo" data-v="'+kind+(m?':'+m:'')+'"'+(busyPhoto?' disabled':'')+'>Oʻchirish</button>':'')+
+    '</div>';
+}
+function shrink(file,max,q){
+  return new Promise(function(res,rej){
+    function fromBitmap(){
+      createImageBitmap(file,{imageOrientation:'from-image'}).then(function(bm){done(bm,bm.width,bm.height);},function(){fromImg();});
+    }
+    function fromImg(){
+      var fr=new FileReader();
+      fr.onload=function(){var im=new Image();im.onload=function(){done(im,im.naturalWidth,im.naturalHeight);};im.onerror=function(){rej(new Error('rasm oʻqilmadi'));};im.src=fr.result;};
+      fr.onerror=function(){rej(new Error('fayl oʻqilmadi'));};
+      fr.readAsDataURL(file);
+    }
+    function done(src,w,h){
+      var s=Math.min(1,max/Math.max(w,h)),c=document.createElement('canvas');
+      c.width=Math.max(1,Math.round(w*s));c.height=Math.max(1,Math.round(h*s));
+      var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(src,0,0,c.width,c.height);
+      var out=c.toDataURL('image/jpeg',q);
+      /* Firestore hujjati 1 MB dan oshmasin */
+      var tries=0;
+      while(out.length>820000&&tries<4){q=Math.max(0.45,q-0.12);out=c.toDataURL('image/jpeg',q);tries++;}
+      if(out.length>820000){
+        var c2=document.createElement('canvas'),k=0.7;
+        c2.width=Math.round(c.width*k);c2.height=Math.round(c.height*k);
+        c2.getContext('2d').drawImage(c,0,0,c2.width,c2.height);
+        out=c2.toDataURL('image/jpeg',0.6);
+      }
+      res(out);
+    }
+    if(typeof createImageBitmap==='function')fromBitmap();else fromImg();
+  });
+}
+function pickPhoto(kind,m){
+  if(busyPhoto)return;
+  var inp=document.getElementById('photo-input');if(!inp)return;
+  inp.onchange=function(){var f=inp.files&&inp.files[0];inp.value='';if(f)uploadPhoto(f,kind,m);};
+  inp.click();
+}
+function uploadPhoto(file,kind,m){
+  var g=curGap();if(!g)return;
+  if(!user){toast('Avval Google hisobingiz bilan kiring');return;}
+  busyPhoto=true;toast('Surat tayyorlanmoqda…');render();
+  shrink(file,1600,0.82).then(function(d){
+    var id=photoId(g,kind,m);
+    return setDoc(doc(fdb,'kassa',id),{data:d,gap:g.id,kind:kind,m:m||'',at:stamp(),by:(user&&user.email)||''}).then(function(){
+      photos[id]=d;
+      g.photos=g.photos||{};
+      if(kind==='food')g.photos.food=id;else{g.photos.win=g.photos.win||{};g.photos.win[m]=id;}
+      busyPhoto=false;dirty=true;toast('Surat qoʻshildi — endi “Saqlash”ni bosing');render();
+    });
+  }).catch(function(err){
+    busyPhoto=false;
+    var c=err&&err.code||'';
+    if(c.indexOf('permission-denied')>=0)toast('Surat saqlanmadi: yozish huquqi yoʻq.');
+    else toast('Surat saqlanmadi: '+((err&&err.message)||c));
+    render();
+  });
+}
+function removePhoto(kind,m){
+  var g=curGap();if(!g)return;
+  var id=photoRef(g,kind,m);if(!id)return;
+  busyPhoto=true;render();
+  deleteDoc(doc(fdb,'kassa',id)).then(function(){},function(){}).then(function(){
+    photos[id]='';
+    if(kind==='food'){if(g.photos)delete g.photos.food;}
+    else if(g.photos&&g.photos.win)delete g.photos.win[m];
+    busyPhoto=false;dirty=true;toast('Surat oʻchirildi — “Saqlash”ni bosing');render();
+  });
+}
+
+/* ---------- views ---------- */
+function header(){
+  var gs=sorted(),last=gs[gs.length-1],day=+state.settings.day||15;
+  var total=active().reduce(function(s,m){return s+(+m.lots||0);},0);
+  var wonP=0;state.gaps.forEach(function(g){(g.winners||[]).forEach(function(w){if(member(w.m).active!==false)wonP+=w.part;});});
+  var kassa=last?pot(last):total*(+state.settings.lotPrice||0);
+  var ng=nextGap(),left=Math.round((total-wonP)*100)/100;
+  var eb=canEdit?'<button class="btn sm'+(ui.edit?' on':'')+'" data-act="toggle-edit" aria-pressed="'+ui.edit+'">'+(ui.edit?'Tayyor':PENCIL+'Tahrirlash')+'</button>':'';
+  return '<header class="top"><div><div class="eyebrow">Kassa · har oyning '+day+'-sanasi</div><h1>'+esc(state.settings.name||'Kassa')+'</h1></div>'+eb+'</header>'+
+    '<div class="stats">'+
+    stat('Kassa',usd(kassa),active().length+' aʼzo · '+lotsTxt(total)+' qurʼa')+
+    stat('Qurʼa chiqdi',lotsTxt(wonP)+' / '+lotsTxt(total),left>0?lotsTxt(left)+' ta qoldi':'davra tugadi')+
+    stat('Keyingi gap',dayMonth(ng.dt),ng.diff===0?'bugun':ng.diff+' kun qoldi')+
+    '</div>';
+}
+function stat(k,v,s){return '<div class="stat"><div class="k">'+k+'</div><div class="v">'+esc(v)+'</div><div class="s">'+esc(s)+'</div></div>';}
+function tabs(){
+  var t=[['gaps','Gaplar'],['lots','Qurʼalar'],['members','Aʼzolar']];
+  return '<nav class="tabs" role="tablist">'+t.map(function(x){return '<button class="tab" role="tab" id="tab-'+x[0]+'" aria-selected="'+(ui.tab===x[0])+'" data-act="tab" data-v="'+x[0]+'">'+x[1]+'</button>';}).join('')+'</nav>';
+}
+
+function gapsView(){
+  var E=isEdit(),gs=sorted(),g=curGap();
+  var chips=(E?'<button class="chip add" data-act="new-gap">+ Yangi gap</button>':'')+gs.slice().reverse().map(function(x){var i=gs.indexOf(x);return '<button class="chip" data-act="pick-gap" data-v="'+x.id+'" aria-pressed="'+(!!g&&x.id===g.id)+'">'+(i+1)+'-gap · '+dmy(x.date).slice(0,5)+'</button>';}).join('');
+  var h='<div class="chips">'+chips+'</div>';
+  if(!g)return h+'<p class="empty">Hali gap yoʻq.'+(E?' “+ Yangi gap” tugmasini bosing.':'')+'</p>';
+  var n=gapNo(g),p=pot(g),c=collected(g),rate=+g.rate||0,wids=(g.winners||[]).map(function(w){return w.m;});
+  var rows=g.rows.map(function(r,i){
+    var m=member(r.m),isW=wids.indexOf(r.m)>=0;
+    var mark=E?'<button class="mark" data-act="toggle-paid" data-v="'+i+'" aria-pressed="'+!!r.paid+'" aria-label="'+esc(m.name)+(r.paid?': toʻladi':': toʻlamadi')+'">'+(r.paid?TICK:'<span class="box"></span>')+'</button>'
+      :'<span class="mark" aria-label="'+(r.paid?'toʻladi':'toʻlamagan')+'">'+(r.paid?TICK:'<span class="pending">toʻlamagan</span>')+'</span>';
+    var amt=E?'<input class="in amt-in" id="amt-'+g.id+'-'+r.m+'" data-f="amt" data-v="'+i+'" inputmode="numeric" aria-label="'+esc(m.name)+' summasi" value="'+(+r.amt||0)+'">':'<span class="amt">'+usd(r.amt)+'</span>';
+    return '<li class="row '+(r.paid?'paid':'due')+'"><span class="no">'+(i+1)+'</span><span class="nm">'+esc(m.name)+(isW?'<span class="hand took">— oldi</span>':'')+'</span>'+amt+mark+(E?'<button class="x" data-act="rm-row" data-v="'+i+'" aria-label="'+esc(m.name)+'ni bu gapdan olib tashlash">×</button>':'')+'</li>';
+  }).join('');
+  var unpaid=g.rows.filter(function(r){return !r.paid;});
+  var pct=p?Math.round(c/p*100):0;
+  h+='<section class="sheet"><div class="sheet-head"><span class="hand hand-lg">'+n+'-gap</span><span class="hand">'+esc(dmy(g.date))+'</span></div>'+
+    '<ol class="rows'+(E?' edit':'')+'">'+rows+'</ol>'+
+    '<div class="sum"><span class="lbl">Jami</span><b class="amt big">'+usd(p)+'</b></div>'+
+    (rate?'<div class="conv">≈ '+som(p*rate)+' · kurs '+num(rate)+'</div>':'')+
+    '<div class="bar" role="img" aria-label="Yigʻildi '+pct+'%"><i style="width:'+pct+'%"></i></div>'+
+    '<div class="collect"><span>Yigʻildi <b>'+usd(c)+'</b></span>'+(p-c>0?'<span class="d">Qoldi <b>'+usd(p-c)+'</b></span>':'')+'</div>'+
+    (unpaid.length?'<p class="unpaid"><b>Toʻlamaganlar:</b> '+esc(unpaid.map(function(r){return member(r.m).name;}).join(', '))+'</p>':(g.rows.length?'<p class="allpaid">Hamma toʻladi</p>':''));
+  if(E){
+    var missing=active().filter(function(m){return !g.rows.some(function(r){return r.m===m.id;});});
+    if(missing.length)h+='<div class="addrow"><select class="in" id="add-row-sel" aria-label="Aʼzo tanlang">'+missing.map(function(m){return '<option value="'+m.id+'">'+esc(m.name)+' · '+usd((+m.lots||0)*(+state.settings.lotPrice||0))+'</option>';}).join('')+'</select><button class="btn" data-act="add-row">Qoʻshish</button></div>';
+  }
+  h+='</section>';
+
+  var per=g.rows.length?(+g.expense||0)/g.rows.length:0,pr=prevRate(g);
+  h+='<h2>Gap tafsilotlari</h2><dl class="facts">';
+  if(E){
+    h+=fact('Sana','<input class="in" type="date" id="g-date-'+g.id+'" data-f="g-date" value="'+esc(g.date)+'">')+
+      fact('Dollar kursi','<input class="in" id="g-rate-'+g.id+'" data-f="g-rate" inputmode="decimal" placeholder="'+(pr?'oldingi gapda: '+num(pr):'masalan: 12 050')+'" value="'+(rate||'')+'"><small>1 '+esc(cur())+' necha soʻm — shu kungi kurs'+(rate?' · kassa ≈ '+som(p*rate):'')+'</small>')+
+      fact('Joy','<input class="in" id="g-place-'+g.id+'" data-f="g-place" placeholder="Samovar, xona" value="'+esc(g.place)+'">')+
+      fact('Taom','<input class="in" id="g-food-'+g.id+'" data-f="g-food" placeholder="Osh, 1,4 kg" value="'+esc(g.food)+'">'+
+        (photoRef(g,'food')?photoBox(photoRef(g,'food'),'Ovqat surati','ph-food'):'')+photoActs('food','',!!photoRef(g,'food')))+
+      fact('Xarajat, soʻm','<input class="in" id="g-exp-'+g.id+'" data-f="g-exp" inputmode="numeric" value="'+(+g.expense||0)+'"><small>Har kishiga '+som(per)+'</small>')+
+      fact('Izoh','<input class="in" id="g-note-'+g.id+'" data-f="g-note" value="'+esc(g.note)+'">');
+  }else{
+    h+=fact('Dollar kursi',rate?'1 '+esc(cur())+' = '+som(rate)+'<small>Kassa soʻmda: '+som(p*rate)+'</small>':'<span class="muted">yozilmagan</span>')+
+      fact('Joy',esc(g.place||'—'))+
+      fact('Taom',esc(g.food||'—')+(photoRef(g,'food')?photoBox(photoRef(g,'food'),'Ovqat surati','ph-food'):''))+
+      fact('Xarajat',(+g.expense?som(g.expense)+'<small>'+g.rows.length+' kishiga teng: har kishiga '+som(per)+(rate?' (≈ '+usd(per/rate)+')':'')+'</small>':'—'))+
+      (g.note?fact('Izoh',esc(g.note)):'');
+  }
+  h+='</dl>';
+
+  var ws=g.winners||[];
+  if(ws.length){
+    var amt=p*ws[0].part,multi=ws.length>1;
+    h+='<div class="won"><div class="won-top"><div><div class="k">Kassani oldi</div><div class="hand">'+esc(names(wids).join(' va '))+'</div></div><div class="r"><b class="amt big">'+usd(amt)+'</b>'+(multi?'<small>har biriga</small>':'')+(rate?'<small>≈ '+som(amt*rate)+'</small>':'')+'</div></div>'+
+      ws.map(function(w){return signBlock(g,w,E,multi,amt);}).join('')+'</div>';
+  }else{
+    h+='<div class="won none">Bu gapda kassani hali hech kim olmagan.</div>';
+  }
+  if(E){
+    var pl=pool(g.id),seen={},opts='<option value="">— hali hech kim —</option>',curW=ws.length?wids.join('+')+'|'+ws[0].part:'';
+    pl.forEach(function(t){var k=tKey(t);if(seen[k]){seen[k].c++;return;}seen[k]={t:t,c:1};});
+    if(curW&&!seen[curW])seen[curW]={t:{ms:wids,part:ws[0].part},c:1};
+    Object.keys(seen).forEach(function(k){opts+='<option value="'+esc(k)+'"'+(k===curW?' selected':'')+'>'+esc(tLabel(seen[k].t))+(seen[k].c>1?' · '+seen[k].c+' qurʼasi bor':'')+'</option>';});
+    h+='<div class="won-edit"><label for="win-'+g.id+'" class="note" style="margin:0">Qurʼada kim chiqdi?</label><select class="in" id="win-'+g.id+'" data-f="g-win">'+opts+'</select></div>';
+    h+=ui.del===g.id?'<div class="del">'+n+'-gap butunlay oʻchiriladi. <button class="btn sm danger" data-act="del-gap-yes">Ha, oʻchirish</button><button class="btn sm" data-act="del-gap-no">Yoʻq</button></div>'
+      :'<div class="del"><button class="btn sm danger" data-act="del-gap">Bu gapni oʻchirish</button></div>';
+  }
+  return h;
+}
+function signBlock(g,w,E,multi,amt){
+  var s=(g.signs||{})[w.m],nm=member(w.m).name;
+  var pid=photoRef(g,'win',w.m);
+  var pic=(pid?photoBox(pid,nm+' — kassani olgan payti','ph-win'):'')+(E?photoActs('win',w.m,!!pid):'');
+  if(E&&ui.sign&&ui.sign.g===g.id&&ui.sign.m===w.m){
+    return '<div class="pad"><div class="pad-k"><b>'+esc(nm)+'</b>: “'+gapNo(g)+'-gap kassasini, '+usd(amt)+', oldim.” Pastdagi chiziqqa barmoq bilan imzo qoʻying.</div>'+
+      '<canvas id="sigpad" aria-label="Imzo maydoni"></canvas>'+
+      '<div class="pad-acts"><button class="btn sm" data-act="sig-clear">Tozalash</button><button class="btn sm" data-act="sig-cancel">Bekor qilish</button><button class="btn sm primary" data-act="sig-ok">Imzoni tasdiqlash</button></div></div>';
+  }
+  if(s&&s.d){
+    return '<div class="sign">'+pic+'<div class="sigline">'+sigSvg(s.d)+'</div><div class="sigcap"><span>'+esc(nm)+' imzosi</span><span>'+esc(atTxt(s.at))+'</span></div>'+
+      (E?'<div><button class="btn sm" data-act="sig-open" data-v="'+w.m+'">Qayta imzo qoʻydirish</button></div>':'')+'</div>';
+  }
+  return '<div class="sign">'+pic+(E?'<div><button class="btn primary" data-act="sig-open" data-v="'+w.m+'">'+esc(nm)+' imzo qoʻysin</button></div>'
+    :'<div><span class="pending">'+esc(nm)+' hali imzo qoʻymagan</span></div>')+'</div>';
+}
+function fact(k,v){return '<div class="fact"><dt>'+k+'</dt><dd>'+v+'</dd></div>';}
+
+function lotsView(){
+  var st=stats(),gs=sorted(),t=pool(null);
+  var wonGaps=gs.filter(function(g){return g.winners&&g.winners.length;});
+  var cells=wonGaps.map(function(g){return '<span class="lot won" title="'+esc(names(g.winners.map(function(w){return w.m;})).join(' va '))+'">'+gapNo(g)+'</span>';}).join('')+t.map(function(){return '<span class="lot"></span>';}).join('');
+  var last=gs[gs.length-1],endTxt='';
+  if(t.length&&last){var k=t.length-((last.winners&&last.winners.length)?0:1),b=parseISO(last.date),e=new Date(b.getFullYear(),b.getMonth()+k,+state.settings.day||15);endTxt=' · oxirgi gap taxminan <strong>'+MONTHS[e.getMonth()]+' '+e.getFullYear()+'</strong>';}
+  var h='<h2>Qurʼalar · har katak — bitta kassa</h2><div class="lotstrip" aria-hidden="true">'+cells+'</div>'+
+    '<p class="lotnote"><b>'+wonGaps.length+'</b> tasi chiqdi · <b>'+t.length+'</b> tasi qoldi'+endTxt+'</p>';
+
+  var list=active().map(function(m){var tot=+m.lots||0,won=(st[m.id]||{}).parts||0;return {m:m,tot:tot,won:won,left:Math.round((tot-won)*100)/100};});
+  list.sort(function(a,b){return (b.left>0)-(a.left>0)||b.left-a.left||a.m.name.localeCompare(b.m.name);});
+  h+='<h2>Kimda nechta kassa qoldi</h2><div class="ltable" role="table"><div class="lrow lhead" role="row"><span role="columnheader">Aʼzo</span><span role="columnheader">Qurʼa</span><span role="columnheader">Oldi</span><span role="columnheader">Qoldi</span></div>'+
+    list.map(function(x){return '<div class="lrow'+(x.left>0?'':' done')+'" role="row"><span class="lname" role="cell">'+esc(x.m.name)+dots(x.tot,x.won)+'</span><span class="n" role="cell">'+lotsTxt(x.tot)+'</span><span class="n" role="cell">'+(x.won?lotsTxt(x.won):'—')+'</span><span class="n left" role="cell">'+(x.left>0?lotsTxt(x.left):'—')+'</span></div>';}).join('')+'</div>';
+  var pairs=t.filter(function(x){return x.ms.length>1;});
+  if(pairs.length)h+='<p class="note">Yarim qurʼalar juftlanadi: '+esc(pairs.map(function(x){return names(x.ms).join(' + ');}).join('; '))+'. Shu qurʼa chiqsa, kassa ikkalasiga teng boʻlinadi.</p>';
+
+  h+='<h2>Kassani olganlar · '+wonGaps.length+'</h2>';
+  h+=wonGaps.length?'<ul class="plist">'+wonGaps.map(function(g){
+    var ws=g.winners,p=pot(g),rate=+g.rate||0;
+    var sg=ws.map(function(w){var s=(g.signs||{})[w.m];return s&&s.d?sigSvg(s.d,'sigmini'):'<span class="pending">imzosiz</span>';}).join('');
+    return '<li><span>'+esc(names(ws.map(function(w){return w.m;})).join(' va '))+'<small>'+gapNo(g)+'-gap · '+dmy(g.date)+' · '+usd(p*ws[0].part)+(ws.length>1?' dan':'')+(rate?' ≈ '+som(p*ws[0].part*rate):'')+'</small></span><span class="rt">'+sg+'</span></li>';
+  }).join('')+'</ul>':'<p class="empty">Hali hech kim olmagan.</p>';
+  return h;
+}
+
+function membersView(){
+  var E=isEdit(),st=stats(),price=+state.settings.lotPrice||0;
+  var tp=0,td=0;Object.keys(st).forEach(function(k){tp+=st[k].paid;td+=st[k].due;});
+  var h='<div class="summary"><span>Jami berildi <b>'+usd(tp)+'</b></span>'+(td>0?'<span class="d">Qarz <b>'+usd(td)+'</b></span>':'<span>Qarz yoʻq</span>')+'<span>1 qurʼa = <b>'+usd(price)+'</b></span></div>';
+  var act=active(),out=state.members.filter(function(m){return m.active===false;});
+  if(E){
+    h+='<ul class="mlist">'+act.map(function(m){
+      return '<li class="mrow"><div class="medit"><input class="in" id="mn-'+m.id+'" data-f="mname" data-v="'+m.id+'" value="'+esc(m.name)+'" aria-label="Ism">'+
+        '<div class="stepper"><button data-act="lots-" data-v="'+m.id+'" aria-label="Kamaytirish">−</button><span><b>'+usd((+m.lots||0)*price)+'</b>'+lotsTxt(m.lots)+' qurʼa</span><button data-act="lots+" data-v="'+m.id+'" aria-label="Koʻpaytirish">+</button></div>'+
+        '<button class="btn sm danger" data-act="deact" data-v="'+m.id+'">Chiqarish</button></div></li>';
+    }).join('')+'</ul>';
+    h+='<div class="addform"><input class="in" id="new-name" placeholder="Yangi aʼzo ismi" aria-label="Yangi aʼzo ismi"><select class="in" id="new-lots" aria-label="Qurʼa soni">'+[0.5,1,1.5,2,2.5,3,4,5].map(function(x){return '<option value="'+x+'"'+(x===1?' selected':'')+'>'+lotsTxt(x)+' qurʼa</option>';}).join('')+'</select><button class="btn primary" data-act="add-member">Qoʻshish</button></div>'+
+      '<p class="note">Qurʼa soni oʻzgarsa, faqat keyingi yangi gaplarga taʼsir qiladi. Eski gapdagi summani gap sahifasida tuzatish mumkin.</p>';
+    if(out.length)h+='<h2>Chiqib ketganlar</h2><ul class="plist">'+out.map(function(m){return '<li><span>'+esc(m.name)+'</span><button class="btn sm" data-act="react" data-v="'+m.id+'">Qaytarish</button></li>';}).join('')+'</ul>';
+    h+='<h2>Sozlamalar</h2><div class="settings"><label>Kassa nomi<input class="in" id="set-name" data-f="set-name" value="'+esc(state.settings.name)+'"></label><label>1 qurʼa narxi<input class="in" id="set-price" data-f="set-price" inputmode="numeric" value="'+price+'"></label><label>Valyuta<input class="in" id="set-cur" data-f="set-cur" value="'+esc(state.settings.cur)+'"></label><label>Gap kuni<input class="in" id="set-day" data-f="set-day" inputmode="numeric" value="'+(+state.settings.day||15)+'"></label></div>';
+    return h;
+  }
+  function row(m,isOut){
+    var s=st[m.id]||{paid:0,due:0,won:0,parts:0,exp:0,hist:[]},open=ui.open===m.id;
+    var pills=(isOut?'<span class="pill out">chiqqan</span>':'')+(s.due>0?'<span class="pill due">Qarz '+usd(s.due)+'</span>':(s.hist.length?'<span class="pill ok">Toʻliq</span>':''))+(s.won>0?'<span class="pill won">Oldi '+usd(s.won)+'</span>':'');
+    var r='<li class="mrow"><button class="mbtn" data-act="open" data-v="'+m.id+'" aria-expanded="'+open+'"><span class="mname">'+esc(m.name)+'</span><span class="pills">'+pills+'</span>'+
+      '<span class="mmeta">'+dots(+m.lots||0,s.parts)+'<span>Ulush <b>'+usd((+m.lots||0)*price)+'</b></span><span>Berdi <b>'+usd(s.paid)+'</b></span>'+(s.exp?'<span>Xarajat '+som(s.exp)+'</span>':'')+'</span></button>';
+    if(open){
+      r+='<ul class="hist">'+(s.hist.length?s.hist.map(function(x){
+        return '<li><span>'+x.n+'-gap · '+dmy(x.g.date).slice(0,5)+(x.won?' · <b>kassani oldi '+usd(x.won)+'</b>':'')+'</span><span class="amt">'+(x.absent?'':usd(x.amt))+'</span><span class="'+(x.paid?'':'pending')+'">'+(x.absent?'':x.paid?'toʻladi':'toʻlamagan')+'</span></li>';
+      }).join(''):'<li class="muted">Hali gaplarda qatnashmagan</li>')+'</ul>';
+    }
+    return r+'</li>';
+  }
+  h+='<ul class="mlist">'+act.map(function(m){return row(m,false);}).join('')+'</ul>';
+  var outH=out.filter(function(m){return st[m.id]&&st[m.id].hist.length;});
+  if(outH.length)h+='<h2>Chiqib ketganlar</h2><ul class="mlist">'+outH.map(function(m){return row(m,true);}).join('')+'</ul>';
+  h+='<p class="note"><span class="dots"><i class="dot"></i></span> qurʼada bor · <span class="dots"><i class="dot used"></i></span> chiqib boʻlgan · <span class="dots"><i class="dot half"></i></span> yarim qurʼa</p>';
+  return h;
+}
+
+function saveBar(){
+  if(!dirty)return '';
+  return '<div class="savebar"><div class="in-bar"><span class="msg">'+(saving?'Saqlanmoqda…':'Oʻzgarishlar saqlanmagan')+'</span><span class="acts"><button class="btn sm" data-act="discard"'+(saving?' disabled':'')+'>Bekor qilish</button><button class="btn sm primary" data-act="save"'+(saving?' disabled':'')+'>Saqlash</button></span></div></div>';
+}
+function footer(){
+  var upd=state.updatedAt?'Yangilandi: '+esc(atTxt(state.updatedAt)):(loaded?'':'Yuklanmoqda…');
+  var right=user?'<button class="linkbtn" data-act="signout">Chiqish ('+esc(user.email||'')+')</button>'
+    :'<button class="linkbtn" data-act="signin">Egasi uchun kirish</button>';
+  return '<div class="foot"><span>'+upd+' · v'+APP_VERSION+'</span>'+right+'</div>';
+}
+
+function render(){
+  var body=ui.tab==='members'?membersView():ui.tab==='lots'?lotsView():gapsView();
+  document.getElementById('app').innerHTML=header()+tabs()+'<main>'+body+'</main>'+footer()+saveBar()+zoomView();
+  initPad();
+}
+function zoomView(){
+  if(!lightbox||!photos[lightbox])return '';
+  return '<div class="lightbox" data-act="close-zoom" role="dialog" aria-label="Surat"><img src="'+photos[lightbox]+'" alt="Surat"><button class="btn sm" data-act="close-zoom">Yopish</button></div>';
+}
+var rq=0;
+function later(){if(rq)return;rq=requestAnimationFrame(function(){rq=0;var a=document.activeElement,id=a&&a.id,sel=null;try{sel=a.selectionStart;}catch(e){}render();if(id){var n=document.getElementById(id);if(n&&n!==document.activeElement){try{n.focus({preventScroll:true});if(sel!=null)n.setSelectionRange(sel,sel);}catch(e){}}}});}
+function mark(){if(!dirty){dirty=true;later();}}
+var tt=0;
+function toast(msg){var el=document.getElementById('toast');el.textContent=msg;el.hidden=false;clearTimeout(tt);tt=setTimeout(function(){el.hidden=true;},4200);}
+function stash(){try{sessionStorage.setItem('kassa-ui',JSON.stringify({tab:ui.tab,gap:ui.gap,open:ui.open}));}catch(e){}}
+
+/* ---------- signature pad ---------- */
+function r2(v){return Math.round(v*2)/2;}
+function toD(strokes){
+  return strokes.map(function(p){
+    if(!p.length)return '';
+    var d='M'+p[0][0]+' '+p[0][1];
+    if(p.length===1)return d+'l0.1 0';
+    for(var i=1;i<p.length-1;i++)d+='Q'+p[i][0]+' '+p[i][1]+' '+r2((p[i][0]+p[i+1][0])/2)+' '+r2((p[i][1]+p[i+1][1])/2);
+    var l=p[p.length-1];return d+'L'+l[0]+' '+l[1];
+  }).join('');
+}
+function initPad(){
+  var c=document.getElementById('sigpad');if(!c)return;
+  var rect=c.getBoundingClientRect();if(!rect.width)return;
+  var dpr=window.devicePixelRatio||1,k=rect.width/SW;
+  c.width=Math.round(rect.width*dpr);c.height=Math.round(rect.width/SW*SH*dpr);
+  var ctx=c.getContext('2d');ctx.setTransform(dpr*k,0,0,dpr*k,0,0);
+  ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=3.2;ctx.strokeStyle=getComputedStyle(c).color;
+  function draw(){ctx.clearRect(0,0,SW,SH);if(!sig.strokes.length)return;try{ctx.stroke(new Path2D(toD(sig.strokes)));}catch(e){}}
+  function pt(e){var b=c.getBoundingClientRect(),s=SW/b.width;return [r2(Math.min(SW,Math.max(0,(e.clientX-b.left)*s))),r2(Math.min(SH,Math.max(0,(e.clientY-b.top)*s)))];}
+  var curS=null;
+  c.addEventListener('pointerdown',function(e){e.preventDefault();try{c.setPointerCapture(e.pointerId);}catch(err){}curS=[pt(e)];sig.strokes.push(curS);draw();});
+  c.addEventListener('pointermove',function(e){if(!curS)return;e.preventDefault();var p=pt(e),l=curS[curS.length-1];if(Math.abs(p[0]-l[0])+Math.abs(p[1]-l[1])<2)return;curS.push(p);draw();});
+  function end(){curS=null;}
+  c.addEventListener('pointerup',end);c.addEventListener('pointercancel',end);c.addEventListener('pointerleave',end);
+  draw();
+}
+
+/* ---------- firebase: live data + save ---------- */
+onSnapshot(ref,function(snap){
+  loaded=true;
+  if(!snap.exists()){render();return;}
+  var d=snap.data();
+  if(!d||!d.members||!d.gaps){render();return;}
+  var incoming={v:d.v||1,settings:d.settings||state.settings,members:d.members,gaps:d.gaps,updatedAt:d.updatedAt||''};
+  saved=clone(incoming);
+  if(dirty){remoteWaiting=clone(incoming);toast('Kassa boshqa qurilmada yangilandi. Saqlasangiz, sizdagi holat yoziladi.');render();return;}
+  state=clone(incoming);render();
+},function(err){loaded=true;toast('Maʼlumotni olishda xato: '+(err&&err.code||err));render();});
+
+function save(){
+  if(saving)return;
+  if(!user){toast('Avval Google hisobingiz bilan kiring');return;}
+  if(ui.sign&&sig.strokes.length){toast('Avval imzoni tasdiqlang yoki bekor qiling');return;}
+  saving=true;render();
+  state.updatedAt=stamp();
+  var body={v:1,settings:state.settings,members:state.members,gaps:state.gaps,updatedAt:state.updatedAt,by:user.email||''};
+  setDoc(ref,body).then(function(){
+    saving=false;dirty=false;remoteWaiting=null;saved=clone(state);toast('Saqlandi — hamma shu zahoti koʻradi');render();
+  },function(err){
+    saving=false;var c=err&&err.code||'';
+    if(c.indexOf('permission-denied')>=0)toast('Sizda yozish huquqi yoʻq. Kassa egasining hisobi bilan kiring.');
+    else if(c.indexOf('unavailable')>=0)toast('Internet yoʻq — ulanish tiklanganda oʻzi saqlanadi.');
+    else toast('Saqlanmadi: '+(err&&err.message||c));
+    render();
+  });
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-act]');if(!b)return;
+  var a=b.getAttribute('data-act'),v=b.getAttribute('data-v'),g=curGap(),price=+state.settings.lotPrice||0,m;
+  switch(a){
+    case 'tab':ui.tab=v;ui.del=null;stash();break;
+    case 'toggle-edit':ui.edit=!ui.edit;ui.del=null;if(!ui.edit){ui.sign=null;sig.strokes=[];}break;
+    case 'pick-gap':ui.gap=v;ui.del=null;ui.sign=null;sig.strokes=[];stash();break;
+    case 'new-gap':
+      var ng={id:uid('g'),date:newGapDate(),rows:active().map(function(x){return {m:x.id,amt:(+x.lots||0)*price,paid:false};}),winners:[],signs:{},rate:0,place:'',food:'',expense:0,note:''};
+      state.gaps.push(ng);ui.gap=ng.id;ui.sign=null;dirty=true;toast(gapNo(ng)+'-gap ochildi');break;
+    case 'toggle-paid':if(g){var r=g.rows[+v];r.paid=!r.paid;dirty=true;}break;
+    case 'rm-row':if(g){g.rows.splice(+v,1);dirty=true;}break;
+    case 'add-row':var sel=document.getElementById('add-row-sel');if(g&&sel&&sel.value){m=member(sel.value);g.rows.push({m:m.id,amt:(+m.lots||0)*price,paid:false});dirty=true;}break;
+    case 'del-gap':ui.del=g&&g.id;break;
+    case 'del-gap-no':ui.del=null;break;
+    case 'del-gap-yes':
+      if(g){
+        var ids=[];if(g.photos){if(g.photos.food)ids.push(g.photos.food);Object.keys(g.photos.win||{}).forEach(function(k){ids.push(g.photos.win[k]);});}
+        ids.forEach(function(pid){deleteDoc(doc(fdb,'kassa',pid)).catch(function(){});});
+        state.gaps=state.gaps.filter(function(x){return x.id!==g.id;});ui.gap=null;ui.del=null;ui.sign=null;dirty=true;toast('Gap oʻchirildi');
+      }break;
+    case 'pick-photo':var pv=String(v).split(':');pickPhoto(pv[0],pv[1]||'');return;
+    case 'rm-photo':var rv=String(v).split(':');removePhoto(rv[0],rv[1]||'');return;
+    case 'zoom':lightbox=v;break;
+    case 'close-zoom':lightbox=null;break;
+    case 'sig-open':if(g){ui.sign={g:g.id,m:v};sig.strokes=[];}break;
+    case 'sig-clear':sig.strokes=[];break;
+    case 'sig-cancel':ui.sign=null;sig.strokes=[];break;
+    case 'sig-ok':
+      if(!g||!ui.sign)return;
+      if(!sig.strokes.some(function(s){return s.length>1;})){toast('Avval imzo qoʻying');return;}
+      g.signs=g.signs||{};g.signs[ui.sign.m]={d:toD(sig.strokes),at:stamp()};
+      ui.sign=null;sig.strokes=[];dirty=true;toast('Imzo qoʻyildi — endi “Saqlash”ni bosing');break;
+    case 'open':ui.open=ui.open===v?null:v;stash();break;
+    case 'lots-':case 'lots+':m=member(v);m.lots=Math.max(0.5,Math.round(((+m.lots||0)+(a==='lots+'?0.5:-0.5))*2)/2);dirty=true;break;
+    case 'deact':
+      m=member(v);var used=state.gaps.some(function(x){return x.rows.some(function(r){return r.m===v;})||(x.winners||[]).some(function(w){return w.m===v;});});
+      if(used)m.active=false;else state.members=state.members.filter(function(x){return x.id!==v;});
+      dirty=true;toast(m.name+(used?' roʻyxatdan chiqarildi (tarixi saqlanadi)':' oʻchirildi'));break;
+    case 'react':m=member(v);delete m.active;dirty=true;break;
+    case 'add-member':
+      var ni=document.getElementById('new-name'),nl=document.getElementById('new-lots'),nm=(ni&&ni.value||'').trim();
+      if(!nm){toast('Avval ismini yozing');if(ni)ni.focus();return;}
+      state.members.push({id:uid('m'),name:nm,lots:+(nl&&nl.value)||1});dirty=true;toast(nm+' qoʻshildi');break;
+    case 'save':save();return;
+    case 'discard':
+      state=clone(remoteWaiting||saved);dirty=false;remoteWaiting=null;ui.del=null;ui.sign=null;sig.strokes=[];toast('Oʻzgarishlar bekor qilindi');break;
+    case 'signin':doSignIn();return;
+    case 'signout':signOut(auth);return;
+    default:return;
+  }
+  render();
+});
+document.addEventListener('input',function(e){
+  var el=e.target,f=el.getAttribute&&el.getAttribute('data-f');if(!f)return;
+  var g=curGap(),v=el.value;
+  switch(f){
+    case 'amt':if(g&&g.rows[+el.getAttribute('data-v')])g.rows[+el.getAttribute('data-v')].amt=toNum(v);break;
+    case 'g-date':if(g&&v)g.date=v;break;
+    case 'g-rate':if(g)g.rate=toNum(v);break;
+    case 'g-place':if(g)g.place=v;break;
+    case 'g-food':if(g)g.food=v;break;
+    case 'g-exp':if(g)g.expense=toNum(v);break;
+    case 'g-note':if(g)g.note=v;break;
+    case 'mname':var m=member(el.getAttribute('data-v'));m.name=v;break;
+    case 'set-name':state.settings.name=v;break;
+    case 'set-price':state.settings.lotPrice=toNum(v);break;
+    case 'set-cur':state.settings.cur=v.trim().slice(0,4)||'$';break;
+    case 'set-day':var d=Math.round(toNum(v));if(d>=1&&d<=28)state.settings.day=d;break;
+    case 'g-win':
+      if(g){
+        if(!v)g.winners=[];else{var p=v.split('|'),ids=p[0].split('+'),part=+p[1]||1;g.winners=ids.map(function(id){return {m:id,part:part};});}
+        var keep={};(g.signs&&Object.keys(g.signs)||[]).forEach(function(id){if(g.winners.some(function(w){return w.m===id;}))keep[id]=g.signs[id];});g.signs=keep;
+        ui.sign=null;sig.strokes=[];
+      }
+      dirty=true;later();return;
+    default:return;
+  }
+  mark();
+});
+document.addEventListener('change',function(e){var f=e.target.getAttribute&&e.target.getAttribute('data-f');if(f&&f!=='g-win')later();});
+var rz=0;window.addEventListener('resize',function(){if(!document.getElementById('sigpad'))return;clearTimeout(rz);rz=setTimeout(initPad,150);});
+window.addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue='';}});
+
+/* ---------- auth ---------- */
+function doSignIn(){
+  var p=new GoogleAuthProvider();
+  signInWithPopup(auth,p).catch(function(err){
+    var c=err&&err.code||'';
+    if(c.indexOf('popup')>=0){signInWithRedirect(auth,p);return;}
+    toast('Kirishda xato: '+(err&&err.message||c));
+  });
+}
+onAuthStateChanged(auth,function(u){
+  user=u||null;canEdit=!!u;
+  if(!u){ui.edit=false;ui.sign=null;}
+  render();
+  if(u)seedIfEmpty();
+});
+function seedIfEmpty(){
+  getDoc(ref).then(function(snap){
+    if(snap.exists())return;
+    var body={v:1,settings:state.settings,members:state.members,gaps:state.gaps,updatedAt:stamp(),by:(user&&user.email)||''};
+    return setDoc(ref,body).then(function(){toast('Kassa maʼlumoti Firebase\'ga yozildi');});
+  }).catch(function(err){
+    var c=err&&err.code||'';
+    if(c.indexOf('permission-denied')>=0)toast('Bu hisobda yozish huquqi yoʻq.');
+  });
+}
+
+render();
+if('serviceWorker' in navigator)window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});
+
+</script>
 </body>
 </html>
