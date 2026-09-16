@@ -236,6 +236,12 @@ select.in{padding-right:28px}
 .lightbox{position:fixed;inset:0;z-index:20;background:rgba(10,14,22,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
 .lightbox img{max-width:100%;max-height:82vh;border-radius:6px;object-fit:contain}
 .lightbox .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.row.away .nm,.row.away .amt{opacity:.72}
+.chip-away{font-size:11px;font-weight:600;color:var(--ink-3);background:var(--surface);border:1px solid var(--line);padding:2px 7px;border-radius:999px;margin-left:6px;white-space:nowrap}
+.chip-t{appearance:none;border:1px solid var(--pen);background:var(--pen-soft);color:var(--pen);border-radius:999px;padding:5px 11px;font:600 13px var(--sans);margin:0 6px 6px 0;cursor:pointer}
+.chip-t.off{border-color:var(--line);background:var(--surface);color:var(--ink-3);text-decoration:line-through}
+.guest-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-block:4px}
+.guest-edit{display:grid;grid-template-columns:minmax(0,1fr) auto 28px;gap:8px;align-items:center;margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -255,7 +261,7 @@ const FIREBASE_CONFIG={
   appId: "1:814437310687:web:0a4e4074db5a6adfe1496a"
 };
 const INITIAL_STATE={"v": 1, "settings": {"name": "Dorixonachilar kassasi", "lotPrice": 1000, "cur": "$", "day": 15}, "members": [{"id": "m2", "name": "Jasurbek aka", "lots": 1.5}, {"id": "m3", "name": "Mirzoxid", "lots": 1.5}, {"id": "m4", "name": "Donyorbek", "lots": 2}, {"id": "m5", "name": "Shoxrux", "lots": 1}, {"id": "m6", "name": "Rasuljon", "lots": 2}, {"id": "m7", "name": "Alisher", "lots": 1}, {"id": "m8", "name": "Sarvarbek", "lots": 3}, {"id": "m9", "name": "Saydullo", "lots": 1}, {"id": "m10", "name": "Bunyodbek", "lots": 2}], "gaps": [{"id": "g1", "date": "2026-06-17", "rows": [{"m": "m2", "amt": 1500, "paid": true}, {"m": "m3", "amt": 1500, "paid": true}, {"m": "m4", "amt": 2000, "paid": true}, {"m": "m5", "amt": 1000, "paid": true}, {"m": "m6", "amt": 2000, "paid": true}, {"m": "m7", "amt": 1000, "paid": true}, {"m": "m8", "amt": 3000, "paid": true}, {"m": "m9", "amt": 1000, "paid": true}, {"m": "m10", "amt": 2000, "paid": true}], "winners": [{"m": "m5", "part": 1}], "place": "Sharshara samovari, 35-xona", "food": "Osh, 1,4 kg", "expense": 133000, "note": "", "signs": {"m5": {"d": "M80 22.5Q83.5 27 85.5 30Q87 32.5 89 35Q90.5 37 92 40Q93 42.5 94.5 45.5Q95.5 48 96.5 50.5Q97.5 52.5 98.5 54.5Q99.5 56 100.5 58Q101 59.5 102 61Q103 62.5 104 64Q104.5 65.5 105 66.5Q105.5 67.5 106 68.5Q106.5 69.5 107 70.5Q107.5 71 108 72Q108.5 73 109 74.5Q109.5 75.5 110 76.5Q110 77.5 110.5 78.5Q110.5 79.5 111 81Q111 82.5 111 83.5Q110.5 84 110.5 85Q110 85.5 109.5 87Q108.5 88.5 107.5 89.5Q106.5 90 105.5 91Q104 92 103 93.5Q101.5 94.5 98 96.5Q94 98 92 98.5Q90 99 88 100Q86 100.5 84 101Q81.5 101 79.5 101.5Q77 101.5 75 101.5Q72.5 101.5 70.5 101.5Q68.5 101 66.5 101Q64.5 100.5 62.5 100.5Q60.5 100 58.5 100Q56.5 99.5 55.5 99.5Q54 99 53 99Q52 99 51.5 99L50.5 98.5M67.5 45.5Q69 41 69.5 40Q69.5 39 70.5 37.5Q71 36 72 35Q72.5 33.5 73.5 32.5Q74.5 31 79 27Q83 22.5 85 21Q87 19 89 17.5Q91 16 93 14.5Q94.5 13 96.5 11.5Q98 10 102 8Q106 6 109 5Q111.5 4 114 3.5Q116.5 2.5 118.5 2.5Q120 2 122 2Q123.5 2 125 2.5Q126.5 2.5 127.5 3Q128.5 3 130 4Q131 4.5 131.5 5Q132 5.5 133 7Q133.5 8 134.5 10.5Q135.5 13 136 15.5Q136 17.5 136 20Q135.5 22 135.5 24Q135 26 134.5 28Q133.5 30 132.5 32Q131.5 33.5 130.5 35Q129 36.5 128 38.5Q126.5 40 125 41.5Q123.5 42.5 121.5 44Q119.5 45 117.5 46.5Q115.5 47.5 113.5 49Q111.5 50 110 51Q108.5 51.5 107.5 52Q106.5 52.5 105.5 53Q104.5 53 106.5 52Q108.5 50.5 110 50Q111 49 112.5 49Q113.5 48.5 115 48Q116.5 47.5 118 47.5Q119 47.5 120 48Q120.5 48 121.5 48.5Q122 48.5 123 49Q123.5 49 126.5 55Q129.5 60.5 130 62.5Q130.5 64 131 66Q131 67.5 131 69.5Q131 71.5 131.5 73.5Q131.5 75 131.5 76.5Q131.5 78 131.5 79.5Q131.5 80.5 132 81.5Q132 82.5 132.5 83.5Q133 84.5 134.5 85Q135.5 85.5 137 85.5Q138 85.5 139 85.5Q139.5 85 141 84Q142.5 83 144 82.5Q145 81.5 146 80.5Q147 79.5 148 78.5Q149 77 150.5 75.5Q151.5 74 152 73Q152.5 71.5 153.5 70.5Q154 69.5 154.5 68.5Q155 67.5 155.5 69Q155.5 70.5 155.5 72.5Q155 74 155 76Q155 78 155 80Q155 81.5 155 83.5Q155 85 155 86.5Q155 87.5 155.5 89Q155.5 90 156 91.5Q156 93 156.5 94Q156.5 95 157 96.5Q157.5 97.5 158 98.5Q158.5 99.5 159 101Q159.5 102 160.5 103.5Q161 104.5 162 106Q163 107 163.5 108Q164 108.5 165 109Q165.5 109.5 166.5 110.5Q167 111 168 111.5Q168.5 112 170.5 112.5Q172 112.5 173 112.5Q174 112 175.5 111.5Q176.5 111 177.5 110.5Q178.5 110 179.5 109.5Q180 109 180.5 108.5Q181 108 182 107.5Q182.5 106.5 183.5 105.5Q184 104.5 184.5 103.5Q185 102 185.5 101Q186 99.5 186.5 98.5Q186.5 97 186.5 96Q186.5 95 186.5 94Q186.5 92.5 186.5 91.5Q186.5 90 186.5 89Q186 87.5 185.5 86.5Q185 85 184.5 84Q184 83 183.5 82Q182.5 81 182 80.5Q181 79.5 180 78.5Q178.5 77.5 177 77Q175.5 76 174.5 75.5Q173 75 172 75Q171 74.5 170 74.5Q168.5 74 167 74.5Q165.5 74.5 164.5 74.5Q163 74.5 162.5 75L161.5 75M178 42.5Q182.5 40.5 183.5 40.5L184 40M197 80Q206.5 79.5 208 79.5Q209.5 79 211.5 79Q213.5 79 215.5 79Q217 78.5 219.5 79Q221.5 79 223.5 79Q225 79 227 79Q229 78.5 230.5 78.5Q232 78.5 233.5 78.5Q234.5 78 236.5 78Q238.5 77.5 239.5 78Q240 78 239 80Q238 81.5 237 83Q236 84.5 234.5 86.5Q232.5 88.5 230.5 90.5Q228.5 92.5 226.5 95Q224.5 97.5 223 99.5Q221 101 219.5 103Q218 104.5 217 106Q215.5 107.5 214.5 109Q213.5 110.5 213 111.5Q212 112.5 211.5 113.5Q211 114 210.5 115Q210 115.5 210.5 115Q211 114 211.5 113Q212 111.5 212.5 111Q213 110 213.5 109Q214 108 214.5 107.5Q215 106.5 215.5 106Q216 105.5 216.5 105Q217 104.5 217.5 104Q218 103.5 219 103Q220 102 221 101.5Q222 101 223.5 101Q224.5 100.5 226 100.5Q227 100.5 228.5 101Q229.5 101.5 230.5 102Q231 102 232 103Q232.5 103.5 234 105Q235.5 106.5 237 108Q238 109.5 239.5 111Q240.5 112 241.5 113.5Q242 114.5 243.5 116.5Q245 118.5 246 119.5Q246.5 120 247 121Q247.5 122 248.5 122.5Q249 123 250 124Q250.5 124.5 251 125Q251.5 125.5 252.5 126Q253 126 255 125Q256.5 124 257.5 123.5Q258 122.5 259 121Q260 119.5 261 118Q261.5 116.5 262.5 114.5Q263.5 112.5 264.5 110.5Q265 108 266 106Q267 103.5 268 101.5Q268.5 99.5 269.5 98Q270 96.5 270.5 95.5Q271 94 271.5 93.5Q271.5 92.5 272 92Q272.5 91.5 273 91Q273.5 90.5 275.5 93Q277.5 95 278 97Q278.5 99 279 101Q279.5 103 280 105Q280 107 280.5 108.5Q280.5 110 280.5 111.5Q280.5 112.5 280.5 114Q280 115 280 116Q280 117 280.5 116.5Q281 116 282 114Q283 112 284 110Q285 107.5 286 105.5Q286.5 103.5 288 101Q289 98.5 290 97Q290.5 95.5 291.5 94Q292.5 92.5 294 91Q295 89.5 296 88.5Q296.5 87.5 297.5 87Q298 86 299 85.5Q299.5 84.5 300.5 84Q301 83.5 302 83.5Q302.5 83 303.5 83Q304.5 83 306 84Q307 85 308 87Q309 88.5 310.5 91Q311.5 93 312 94.5Q312.5 95.5 314 101Q315.5 106.5 316 109Q316.5 111.5 317 113Q317.5 114.5 318 116Q318.5 117.5 319 119Q319.5 120 320 121Q320.5 122 322.5 122.5Q324.5 122.5 326 121.5Q327 120.5 329 118.5Q330.5 116 332.5 112.5Q334.5 109 336.5 105.5Q338.5 101.5 340.5 98.5Q342.5 95 345 91.5Q347.5 88 350 84.5Q352.5 81 354.5 78Q356.5 74.5 358.5 71.5Q360.5 68 362 65Q363.5 62 365 59Q366.5 56 367.5 53.5Q368 50.5 368.5 47Q369 43.5 368.5 40.5Q368 37 367 34Q366 30.5 364 28Q362 25 358.5 21.5Q355 17.5 349.5 13.5Q344 9 338 5.5Q331.5 2 324.5 1Q317 0 310 0Q302.5 0 295 0Q287 0 279 0Q271 0 263 0Q255 0 248 0Q240.5 0 233.5 0Q226.5 0 220.5 0Q214 0 208.5 1.5Q202.5 3 197.5 6Q192 9 188 12.5Q184 15.5 180.5 20Q177 24 174.5 28.5Q172 33 170.5 38Q169 42.5 168.5 48.5Q168 54.5 169 61.5Q169.5 68 171 75.5Q172 83 174.5 91Q176.5 98.5 179.5 107Q182.5 115.5 186.5 124Q190.5 132 194 139.5Q197.5 146.5 201.5 152.5Q205 158.5 208.5 159.5Q211.5 160 214.5 160Q217 160 220.5 160Q224 160 227 160Q229.5 160 231.5 160Q233.5 160 235 160Q236.5 160 237.5 160Q238.5 160 240.5 160Q242 160 241 158.5Q240 157 238.5 153Q237 148.5 235 143Q233 137.5 230.5 132Q227.5 126 224.5 120.5Q221.5 115 218.5 108.5Q215 102 211.5 95.5Q207.5 88.5 203.5 81Q199.5 73.5 195.5 66.5Q191.5 59 188 52.5Q184.5 46 180.5 39.5Q176.5 33 173 28Q169 22.5 166 18Q162.5 13.5 160 10Q157 6.5 155 4Q152.5 1.5 150.5 1Q148.5 0 147 0Q145 0 144 0Q142.5 0 140.5 0Q138 0 137.5 3Q137 5.5 138 9.5Q138.5 13.5 140 18.5Q141.5 23.5 144 29Q146 34.5 148.5 41.5Q151 48 154 55Q157 61.5 161 69.5Q165 77 170 85Q175 93 180 101Q185 109 190.5 116.5Q196 124 202 131Q207.5 138 212.5 144Q217 149.5 221.5 154Q226 158 230.5 159Q235 160 239 160Q243 160 246.5 160Q249.5 160 253 160Q256 160 259 160Q262 160 264.5 160Q267 160 269 160Q271 160 272 160Q273 160 266.5 160Q260 160 255.5 160Q251 160 245.5 160Q239.5 160 233.5 160Q227.5 160 221 160Q214 160 206 160Q197.5 160 189 160Q180.5 160 171.5 160Q162 160 152 160Q142 160 132 160Q122 160 112 160Q102 160 93 160Q83.5 160 75.5 160Q67 160 60 160Q52.5 160 45.5 160Q38.5 160 33 160Q27.5 160 23 160Q18 160 14 160Q9.5 160 6.5 160Q3 160 1.5 160Q0 160 5 160Q10 160 15 160Q19.5 160 25 160Q30 160 36.5 160Q42.5 160 50 160Q57 160 62.5 160Q67.5 160 75.5 160Q83.5 160 94.5 155.5Q105 151 117 144Q128.5 136.5 141 129Q153.5 121.5 166 114.5Q178.5 107.5 191 100.5Q203.5 93.5 216 86.5Q228 79.5 240 73Q252 66.5 263.5 60.5Q275 54 286.5 48.5Q297.5 42.5 308.5 37.5Q319 32 329.5 27.5Q340 22.5 349.5 18.5Q359 14.5 367.5 11Q376 7.5 383.5 4.5Q391 1.5 395.5 1Q400 0 400 2.5Q400 5 394 11Q388 16.5 382.5 21L377 25", "at": "2026-09-11T22:17"}}}, {"id": "gmtx82eat4401", "date": "2026-07-15", "rows": [{"m": "m2", "amt": 1500, "paid": true}, {"m": "m3", "amt": 1500, "paid": true}, {"m": "m4", "amt": 2000, "paid": true}, {"m": "m5", "amt": 1000, "paid": true}, {"m": "m6", "amt": 2000, "paid": true}, {"m": "m7", "amt": 1000, "paid": true}, {"m": "m8", "amt": 3000, "paid": true}, {"m": "m9", "amt": 1000, "paid": true}, {"m": "m10", "amt": 2000, "paid": true}], "winners": [{"m": "m8", "part": 1}], "signs": {}, "rate": 12050, "place": "Movorunaxr somovori ", "food": "Qozon kabob ", "expense": 1314000, "note": ""}]};
-const APP_VERSION="2026-09-14.2";
+const APP_VERSION="2026-09-16.1";
 
 var app=initializeApp(FIREBASE_CONFIG);
 var auth=getAuth(app);
@@ -298,6 +304,10 @@ function sorted(){return state.gaps.slice().sort(function(a,b){return a.date<b.d
 function gapNo(g){return sorted().indexOf(g)+1;}
 function pot(g){return g.rows.reduce(function(s,r){return s+(+r.amt||0);},0);}
 function collected(g){return g.rows.reduce(function(s,r){return s+(r.paid?(+r.amt||0):0);},0);}
+function guests(g){return g.guests||[];}
+function camePpl(g){return g.rows.filter(function(r){return !r.away;}).length+guests(g).length;}
+function perHead(g){var n=camePpl(g);return n?(+g.expense||0)/n:0;}
+function awayNames(g){return g.rows.filter(function(r){return r.away;}).map(function(r){return member(r.m).name;});}
 function isEdit(){return canEdit&&ui.edit;}
 function curGap(){var gs=sorted();return gs.find(function(x){return x.id===ui.gap;})||gs[gs.length-1]||null;}
 function names(ids){return ids.map(function(id){return member(id).name;});}
@@ -306,8 +316,8 @@ function prevRate(g){var gs=sorted(),i=gs.indexOf(g);for(var j=(i<0?gs.length:i)
 function stats(){
   var st={};state.members.forEach(function(m){st[m.id]={paid:0,due:0,won:0,parts:0,exp:0,hist:[]};});
   sorted().forEach(function(g,i){
-    var p=pot(g),per=g.rows.length?(+g.expense||0)/g.rows.length:0;
-    g.rows.forEach(function(r){var s=st[r.m];if(!s)return;var a=+r.amt||0;if(r.paid)s.paid+=a;else s.due+=a;s.exp+=per;s.hist.push({g:g,n:i+1,amt:a,paid:!!r.paid,won:0});});
+    var p=pot(g),per=perHead(g);
+    g.rows.forEach(function(r){var s=st[r.m];if(!s)return;var a=+r.amt||0;if(r.paid)s.paid+=a;else s.due+=a;if(!r.away)s.exp+=per;s.hist.push({g:g,n:i+1,amt:a,paid:!!r.paid,won:0});});
     (g.winners||[]).forEach(function(w){var s=st[w.m];if(!s)return;s.won+=p*w.part;s.parts+=w.part;var h=s.hist.find(function(x){return x.g===g;});if(h)h.won=p*w.part;else s.hist.push({g:g,n:i+1,amt:0,paid:true,won:p*w.part,absent:true});});
   });
   return st;
@@ -453,7 +463,7 @@ function gapsView(){
     var mark=E?'<button class="mark" data-act="toggle-paid" data-v="'+i+'" aria-pressed="'+!!r.paid+'" aria-label="'+esc(m.name)+(r.paid?': toʻladi':': toʻlamadi')+'">'+(r.paid?TICK:'<span class="box"></span>')+'</button>'
       :'<span class="mark" aria-label="'+(r.paid?'toʻladi':'toʻlamagan')+'">'+(r.paid?TICK:'<span class="pending">toʻlamagan</span>')+'</span>';
     var amt=E?'<input class="in amt-in" id="amt-'+g.id+'-'+r.m+'" data-f="amt" data-v="'+i+'" inputmode="numeric" aria-label="'+esc(m.name)+' summasi" value="'+(+r.amt||0)+'">':'<span class="amt">'+usd(r.amt)+'</span>';
-    return '<li class="row '+(r.paid?'paid':'due')+'"><span class="no">'+(i+1)+'</span><span class="nm">'+esc(m.name)+(isW?'<span class="hand took">— oldi</span>':'')+'</span>'+amt+mark+(E?'<button class="x" data-act="rm-row" data-v="'+i+'" aria-label="'+esc(m.name)+'ni bu gapdan olib tashlash">×</button>':'')+'</li>';
+    return '<li class="row '+(r.paid?'paid':'due')+(r.away?' away':'')+'"><span class="no">'+(i+1)+'</span><span class="nm">'+esc(m.name)+(isW?'<span class="hand took">— oldi</span>':'')+(r.away?'<span class="chip-away">kelmadi</span>':'')+'</span>'+amt+mark+(E?'<button class="x" data-act="rm-row" data-v="'+i+'" aria-label="'+esc(m.name)+'ni bu gapdan olib tashlash">×</button>':'')+'</li>';
   }).join('');
   var unpaid=g.rows.filter(function(r){return !r.paid;});
   var pct=p?Math.round(c/p*100):0;
@@ -478,13 +488,17 @@ function gapsView(){
       fact('Joy','<input class="in" id="g-place-'+g.id+'" data-f="g-place" placeholder="Samovar, xona" value="'+esc(g.place)+'">')+
       fact('Taom','<input class="in" id="g-food-'+g.id+'" data-f="g-food" placeholder="Osh, 1,4 kg" value="'+esc(g.food)+'">'+
         (photoRef(g,'food')?photoBox(photoRef(g,'food'),'Ovqat surati','ph-food'):'')+photoActs('food','',!!photoRef(g,'food')))+
-      fact('Xarajat, soʻm','<input class="in" id="g-exp-'+g.id+'" data-f="g-exp" inputmode="numeric" value="'+(+g.expense||0)+'"><small>Har kishiga '+som(per)+'</small>')+
+      fact('Xarajat, soʻm','<input class="in" id="g-exp-'+g.id+'" data-f="g-exp" inputmode="numeric" value="'+(+g.expense||0)+'"><small>'+camePpl(g)+' kishiga: har kishiga '+som(per)+'</small>')+
+      fact('Kim kelmadi?',g.rows.map(function(r,i){return '<button class="chip-t'+(r.away?' off':'')+'" data-act="toggle-away" data-v="'+i+'">'+esc(member(r.m).name)+'</button>';}).join('')+'<small>Bosilgan odam kelmagan hisoblanadi: kassa puli qoladi, ovqat xarajatidan chiqadi</small>')+
+      fact('Mehmonlar',guests(g).map(function(gu,i){return '<div class="guest-edit"><input class="in" id="gu-'+g.id+'-'+i+'" data-f="guest-name" data-v="'+i+'" placeholder="Mehmon ismi" value="'+esc(gu.name||'')+'"><button class="btn sm'+(gu.paid?' on':'')+'" data-act="guest-paid" data-v="'+i+'">'+(gu.paid?'toʻladi':'toʻlamadi')+'</button><button class="x" data-act="rm-guest" data-v="'+i+'" aria-label="Mehmonni oʻchirish">×</button></div>';}).join('')+'<button class="btn sm" data-act="add-guest">+ Mehmon qoʻshish</button><small>Mehmon kassaga qoʻshilmaydi, faqat ovqat xarajatiga kiradi</small>')+
       fact('Izoh','<input class="in" id="g-note-'+g.id+'" data-f="g-note" value="'+esc(g.note)+'">');
   }else{
     h+=fact('Dollar kursi',rate?'1 '+esc(cur())+' = '+som(rate)+'<small>Kassa soʻmda: '+som(p*rate)+'</small>':'<span class="muted">yozilmagan</span>')+
       fact('Joy',esc(g.place||'—'))+
       fact('Taom',esc(g.food||'—')+(photoRef(g,'food')?photoBox(photoRef(g,'food'),'Ovqat surati','ph-food'):''))+
-      fact('Xarajat',(+g.expense?som(g.expense)+'<small>'+g.rows.length+' kishiga teng: har kishiga '+som(per)+(rate?' (≈ '+usd(per/rate)+')':'')+'</small>':'—'))+
+      fact('Xarajat',(+g.expense?som(g.expense)+'<small>'+camePpl(g)+' kishiga teng ('+(g.rows.length-awayNames(g).length)+' aʼzo'+(guests(g).length?' + '+guests(g).length+' mehmon':'')+'): har kishiga '+som(per)+(rate?' (≈ '+usd(per/rate)+')':'')+'</small>':'—'))+
+      (awayNames(g).length?fact('Kelmadi',esc(awayNames(g).join(', '))+'<small>kassa puli beriladi, ovqat xarajatiga qoʻshilmaydi</small>'):'')+
+      (guests(g).length?fact('Mehmonlar',guests(g).map(function(gu){return '<div class="guest-row"><span>'+esc(gu.name||'Mehmon')+'</span><span class="'+(gu.paid?'pill ok':'pending')+'">'+(gu.paid?'toʻladi '+som(per):'toʻlamagan')+'</span></div>';}).join('')):'')+
       (g.note?fact('Izoh',esc(g.note)):'');
   }
   h+='</dl>';
@@ -681,9 +695,13 @@ document.addEventListener('click',function(e){
     case 'toggle-edit':ui.edit=!ui.edit;ui.del=null;if(!ui.edit){ui.sign=null;sig.strokes=[];}break;
     case 'pick-gap':ui.gap=v;ui.del=null;ui.sign=null;sig.strokes=[];stash();break;
     case 'new-gap':
-      var ng={id:uid('g'),date:newGapDate(),rows:active().map(function(x){return {m:x.id,amt:(+x.lots||0)*price,paid:false};}),winners:[],signs:{},rate:0,place:'',food:'',expense:0,note:''};
+      var ng={id:uid('g'),date:newGapDate(),rows:active().map(function(x){return {m:x.id,amt:(+x.lots||0)*price,paid:false};}),winners:[],signs:{},guests:[],rate:0,place:'',food:'',expense:0,note:''};
       state.gaps.push(ng);ui.gap=ng.id;ui.sign=null;dirty=true;toast(gapNo(ng)+'-gap ochildi');break;
     case 'toggle-paid':if(g){var r=g.rows[+v];r.paid=!r.paid;dirty=true;}break;
+    case 'toggle-away':if(g){var ra=g.rows[+v];if(ra.away)delete ra.away;else ra.away=true;dirty=true;}break;
+    case 'add-guest':if(g){g.guests=guests(g).concat([{name:'',paid:false}]);dirty=true;}break;
+    case 'rm-guest':if(g&&g.guests){g.guests.splice(+v,1);dirty=true;}break;
+    case 'guest-paid':if(g&&g.guests&&g.guests[+v]){g.guests[+v].paid=!g.guests[+v].paid;dirty=true;}break;
     case 'rm-row':if(g){g.rows.splice(+v,1);dirty=true;}break;
     case 'add-row':var sel=document.getElementById('add-row-sel');if(g&&sel&&sel.value){m=member(sel.value);g.rows.push({m:m.id,amt:(+m.lots||0)*price,paid:false});dirty=true;}break;
     case 'del-gap':ui.del=g&&g.id;break;
@@ -737,6 +755,7 @@ document.addEventListener('input',function(e){
     case 'g-food':if(g)g.food=v;break;
     case 'g-exp':if(g)g.expense=toNum(v);break;
     case 'g-note':if(g)g.note=v;break;
+    case 'guest-name':if(g&&g.guests&&g.guests[+el.getAttribute('data-v')])g.guests[+el.getAttribute('data-v')].name=v;break;
     case 'mname':var m=member(el.getAttribute('data-v'));m.name=v;break;
     case 'set-name':state.settings.name=v;break;
     case 'set-price':state.settings.lotPrice=toNum(v);break;
